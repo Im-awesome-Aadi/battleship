@@ -1,0 +1,48 @@
+
+.header{
+    background-color: #1C1C1C;
+    height: 75px;
+    width: 100%;
+    border-radius: 0 0 10px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.game-name-box{
+    width: 15rem;
+    border-radius: 5px;
+    background: #4609C2;
+    background: -webkit-linear-gradient(bottom right, #4609C2, #5004B5);
+    background: -moz-linear-gradient(bottom right, #4609C2, #5004B5);
+    background: linear-gradient(to top left, #4609C2, #5004B5);
+    color: white;
+    font-weight: 600;
+    padding: 10px 10px 10px 10px;
+    margin-left: 30px;
+}
+.game-name{
+    padding: 0;
+    margin: 0;
+    font-size: 24px;
+    letter-spacing: 5px;
+    
+    
+    overflow: hidden; 
+    
+    white-space: nowrap;
+    margin: 0 auto; 
+      
+    animation: 
+      typing  4.5s steps(30, end) ;
+}
+.header-right{
+    display: flex;
+    width: 30%;
+    justify-content: space-around;
+    color: white;
+}
+
+.how-to-play:hover, .about-us:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}

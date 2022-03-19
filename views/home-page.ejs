@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/common/animation.css" type="text/css">
+    <link rel="stylesheet" href="/css/common/header.css" type="text/css">
+    <link rel="stylesheet" href="/css/home-page.css" type="text/css">
+    <link rel="stylesheet" href="/css/common/boilerplate.css" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+    <title>Document</title>
+    <style>
+     
+    </style>
+</head>
+<body>
+
+    <%- include('./common/header') %> 
+    
+        <div class="cmp-greet">
+            <div class="cmp-greet-container">
+            
+                
+              <ul class="cmp-greet-list">
+                <li class="cmp-greet-type">Namaste, </li>
+                <li class="cmp-greet-type">Hello, </li>
+                <li class="cmp-greet-type">Welcome, </li>
+                <li class="cmp-greet-type">Hola, </li>
+              </ul>
+              
+              
+            </div>
+            <p class="greet-text normal-text">kasls</p>  
+          </div>
+    
+    <div class="home-page-card">
+
+
+
+        <div class="cmp-enter-name">
+            
+                <p class="normal-text fancy-heading">What should we call you?</p>
+                <input id="user-name" type="text" placeholder="Enter your name">
+            
+            <button class="submit-name">SUBMIT
+                <span></span><span></span><span></span><span></span>
+            </button>
+            
+        </div>
+        
+    </div>
+
+    <div class="cmp-ready-to-play">
+
+
+        <p class="normal-text fancy-heading">Let's Play</p>
+
+        <div class="cmp-have-room">
+            
+            <input id="room-id" type="text" placeholder="Enter room ID here">
+            <form method="post" action="/join-room">
+                <button class="join-room">Join the Room
+                    <span></span><span></span><span></span><span></span>
+                </button>
+            </form>
+        </div>
+        <button id="host-game">Host the Game
+            <span></span><span></span><span></span><span></span>
+        </button>
+    </div>
+    
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/common/boilerplate.js"></script>
+    <script src="/js/home-page.js"></script>
+    
+</body>
+</html>

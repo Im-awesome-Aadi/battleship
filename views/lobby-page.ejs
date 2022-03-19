@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/common/animation.css" type="text/css">
+    <link rel="stylesheet" href="/css/common/header.css" type="text/css">
+    <link rel="stylesheet" href="/css/home-page.css" type="text/css">
+    <link rel="stylesheet" href="/css/common/boilerplate.css" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+    <title>Document</title>
+    <style>
+     
+    </style>
+</head>
+<body>
+
+    <%- include('./common/header') %> 
+    
+    <div class="lobby-page-card">
+        <div class="fancy-heading">LOBBY</div>
+        <div class="cmp-lobby-id">Lobby ID : <%= lobbyId%></div>
+        <div class="joined-member-container">
+            <div class="normal-text">GAME WILL START IN 10:00 Minutes</div>
+            <div class="normal-text">Joined Members</div>
+            <ul class="member-list">
+                
+            </ul>
+        </div>
+        <button class="start-game">Start Game
+            <span></span><span></span><span></span><span></span>
+
+
+
+        </button>
+    </div>
+    
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/common/boilerplate.js"></script>
+    <script src="/js/lobby-page.js"></script>
+</body>
+</html>

@@ -1,0 +1,139 @@
+
+.normal-text{
+    color:white;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+.greet-text{
+    text-align: center;
+    display: inline;
+    float: left;
+    margin: 0;
+    color: white;
+      
+}
+
+.cmp-ready-to-play,.cmp-enter-name{
+ 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    height: 15rem;
+    background-color: #1C1C1C;
+    margin: 5% auto;
+    border-radius: 10px;
+    justify-content: space-evenly;
+    animation: 0.5s fade ease-in;
+    white-space: nowrap;
+    overflow: hidden;
+
+}
+.lobby-page-card{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  padding:20px 0;
+  background-color: #1C1C1C;
+  margin: 5% auto;
+  border-radius: 10px;
+  justify-content: space-evenly;
+  animation: 0.5s fade ease-in;
+  white-space: nowrap;
+  overflow: hidden;
+
+}
+.cmp-lobby-id{
+  margin-top: 10px;
+}
+.joined-member-container{
+  display: flex;
+  justify-items: flex-start;
+  width: 90%;
+  margin-top: 25px;
+  flex-direction: column;
+}
+
+#room-id, #user-name{
+    border-radius: 5px;
+    border: 0;
+    height: 36px;
+}
+.cmp-have-room{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.cmp-enter-name-container{
+  display: flex;
+  flex-direction: column;
+}
+
+.cmp-greet {
+    margin: 1.5% auto;
+    display: none;
+    flex-direction: column;
+    align-items: start;
+    width: 50%;
+    height: fit-content;
+    overflow: hidden;
+    font-size: 35px;
+    font-weight: 600;
+    color: #ecf0f1;
+
+  }
+  .cmp-greet-container {
+    font-weight: 600;
+    overflow: hidden;
+    height: 40px;
+    
+  }
+  .cmp-greet-container:after, .cmp-greet-container:before {
+    position: absolute;
+    top: 0;
+    color: #16a085;
+    font-size: 42px;
+    line-height: 40px;
+    -webkit-animation-name: opacity;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-iteration-count: infinite;
+    animation-name: opacity;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+  }
+  .cmp-greet-container__text {
+    display: inline;
+    float: left;
+    margin: 0;
+  }
+  .cmp-greet-list {
+    margin-top: 0;
+    padding:0;
+    text-align: left;
+    list-style: none;
+    font-size: 16px;
+    color: gray;
+    -webkit-animation-name: change;
+    -webkit-animation-duration: 10s;
+    -webkit-animation-iteration-count: infinite;
+    animation-name: change;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+  }
+  .cmp-greet-type {
+    line-height: 40px;
+    margin: 0;
+  }
+  
+
+  @media only screen and (max-width:768px) {
+    .cmp-ready-to-play,.cmp-enter-name{
+      width: 70%;
+    }
+    .cmp-greet{
+      width: 70%;
+    }
+  }
