@@ -64,13 +64,8 @@ $('.join-room').on('click',(e)=>{
 $('#host-game').on('click',(e)=>{
   e.preventDefault();
   
-  //console.log("enteredf room id is " + roomIDEle.val());
   window.location.href= '/host-game';
 });
-function roomJoined(){
-    
-   console.log("user clicked on join-room")
-}
 
 
 

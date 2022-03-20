@@ -66,9 +66,22 @@
     to{
         transform: translate(0,0);
     }
+
+    
     
 }
+@keyframes fadeOut{
+  from{
+      opacity: 1;
+      
 
+  }
+  to{
+      opacity: 0;
+     height: 0;
+     width: 0;
+  }
+}
   
   /* The typing effect */
   @keyframes typing {

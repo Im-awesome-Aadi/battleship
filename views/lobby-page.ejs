@@ -6,12 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/common/animation.css" type="text/css">
     <link rel="stylesheet" href="/css/common/header.css" type="text/css">
+    <link rel="stylesheet" href="/css/common/scrollbar.css" type="text/css">
     <link rel="stylesheet" href="/css/home-page.css" type="text/css">
+    <link rel="stylesheet" href="/css/lobby-page.css" type="text/css">
     <link rel="stylesheet" href="/css/common/boilerplate.css" type="text/css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Document</title>
     <style>
      
@@ -20,14 +23,82 @@
 <body>
 
     <%- include('./common/header') %> 
-    
+      
+    <div class= "hidden-lobby-id" ><%= lobbyId%></div>
+    <div class= "hidden-username" ><%= userName%></div>
     <div class="lobby-page-card">
-        <div class="fancy-heading">LOBBY</div>
+        <div class="header lobby-page-header fancy-heading">
+            <div class="">LOBBY</div>
+            <div class="header-right">
+                <div>
+                    <i class='fa fa-user' ></i>
+                    <span class="header-right-text">Aditya</span>
+                </div>
+                <div>
+                    <i class='fa fa-power-off' ></i>
+                    <span class="header-right-text">Leave</span>
+                </div>
+            </div>
+        </div>
         <div class="cmp-lobby-id">Lobby ID : <%= lobbyId%></div>
+        
+        <div class="lobby-notification">
+            <span>Someone has joined the chat</span>
+            <span>Someone has joined the chat</span>
+        </div>
         <div class="joined-member-container">
-            <div class="normal-text">GAME WILL START IN 10:00 Minutes</div>
-            <div class="normal-text">Joined Members</div>
-            <ul class="member-list">
+            
+            <div class="normal-text">Joined Members : 10</div>
+            <div class="cmp-joined-member">
+                <div class="member-list-div">
+                    <ul class="member-list">
+                        <li>Aditya <span class="cmp-host-name">(Host)</span></li>
+                        <li>Aditya</li>
+                        <li>Aditya</li>
+                        <li>Aditya</li>
+                        <li>Aditya</li>
+                        <li>Aditya</li>
+                        <li>Aditya</li>
+                        <li>Aditya</li>
+                        <li>Aditya</li>
+                        <li>Aditya</li>
+                    </ul>
+                </div>
+                <div class="lobby-chat-container">
+                    <div class="cmp-lobby-chat">
+                        <fieldset>
+                            <legend>Aditya</legend>
+                            <div class="lobby-chats">Hello Everybody</div>
+                        </fieldset>
+                        <fieldset>
+                            <legend>Ritik</legend>
+                            <div class="lobby-chats">Am i audible</div>
+                        </fieldset>
+                        <fieldset>
+                            <legend>Akash</legend>
+                            <div class="lobby-chats">sometime i am not</div>
+                        </fieldset>
+                        <fieldset>
+                            <legend>Shahsank</legend>
+                            <div class="lobby-chats">is this good?</div>
+                        </fieldset>
+                        <fieldset>
+                            <legend>Aditya</legend>
+                            <div class="lobby-chats">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem eos blanditiis reprehenderit nesciunt sapiente! Quod neque, ratione similique nihil qui repudiandae cumque excepturi saepe tempore commodi, quos laborum aperiam incidunt.</div>
+                        </fieldset>
+                        
+                    </div>
+                    <div class="input-message-container">
+                        <div>
+                            <i class="fa fa-comments"></i>
+                        <input class="cmp-input-message" placeholder="Type here to chat">
+                        </div>
+                        <i class="fa fa-paper-plane"></i>
+
+                    </div>
+                
+                </div>
+            </div>
                 
             </ul>
         </div>

@@ -1,28 +1,16 @@
-
-const Conf = require('./utils/conf')
+const Server = require('./service/server')
 const model = require('./model/lobby')
 const homeRoute = require('./route/home-page')
 const cookieRoute = require('./route/cookie')
-require('./utils/db')
-
-Conf.app.use(Conf.cookieParser());
-Conf.app.use(Conf.bodyParser.json());
-Conf.app.use(Conf.Express.static(__dirname + '/public'));
-Conf.app.set('view engine','ejs');
+//require('./utils/db')
 
 
-Conf.app.use('/',homeRoute);
-Conf.app.use('/cookie',cookieRoute);
-
-Conf.app.post('/join-room',function(req,res){
-
-   console.log('called')
-
- 
-});
+Server.app.use('/',homeRoute);
+Server.app.use('/cookie',cookieRoute);
 
 
-Conf.app.get('/api', async(req,res)=>{
+
+Server.app.get('/api', async(req,res)=>{
 
     const newLobby = new model({
         lobbyId : 'ABSDEF',
@@ -32,7 +20,7 @@ Conf.app.get('/api', async(req,res)=>{
     const result = await newLobby.save()
     res.send(result);
 });
-Conf.app.get('/fetch',function(req,res){
+Server.app.get('/fetch',function(req,res){
     model.find()
     .then(result=>{
         result.forEach((index)=>{
@@ -45,7 +33,7 @@ Conf.app.get('/fetch',function(req,res){
     })
 });
 
-Conf.app.get('/update', async (req,res)=>{
+Server.app.get('/update', async (req,res)=>{
     
     const result = await model.find();
 
@@ -65,4 +53,33 @@ Conf.app.get('/update', async (req,res)=>{
            
 
 });
-Conf.server.listen(8080);
+Server.app.get('/delete', async (req,res)=>{
+    
+    const result = await model.find();
+
+    var updated="";
+    result.forEach((index)=>{
+        console.log(index);
+        if(index.lobbyId === "QWERTY"){
+            updated = index;
+            
+    }
+});
+
+    updated.remove();
+    res.send('deleted');
+           
+
+});
+Server.app.get('/deleteall', async (req,res)=>{
+    
+    const result = await model.find();
+
+    
+    result.forEach((index)=>{
+     index.remove();       
+    });
+    res.send('deleted all')
+
+});
+Server.server.listen(8080);

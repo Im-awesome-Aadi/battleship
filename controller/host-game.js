@@ -1,10 +1,18 @@
+const misc = require('../utils/misc')
 const lobbyModel = require('../model/lobby');
-exports.getHostPage= (req,res)=>{
+/*
+    GET REQUEST FOR HOSTING A GAME
+    /host-game
+ */
+exports.getHostPage= async(req,res)=>{
 
-
-    var newLobby = new lobbyModel(null,req.cookies.userName);
-    var roomId = newLobby.createLobbyId().lobbyId;
-    
-    res.redirect(`/lobby/${roomId}`);
+    let lobbyId = misc.createLobbyId();
+    const newLobby = new lobbyModel({
+        lobbyId : lobbyId,
+        hostName : req.cookies.userName,
+        players : []
+    });
+    await newLobby.save();
+    res.redirect(`/lobby/${lobbyId}`);
 }
 

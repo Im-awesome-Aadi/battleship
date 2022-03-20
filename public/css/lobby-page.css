@@ -1,0 +1,162 @@
+.hidden-lobby-id, .hidden-username{
+    display: none;
+}
+.lobby-page-card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    padding:20px 0;
+    background-color: var(--lightblack);
+    margin: 4% auto;
+    border-radius: 10px;
+    justify-content: space-evenly;
+    animation: 0.5s fade ease-in;
+    white-space: nowrap;
+    overflow: hidden;
+    height: 65vh;
+  
+  }
+.lobby-page-header{
+    border-radius: 0;
+    height: fit-content;
+    width: 90%;
+}
+.lobby-page-header i{
+    size: 16px;
+
+}
+.lobby-page-header .header-right div{
+    white-space: nowrap;
+    font-size: 16px;
+}
+.lobby-page-header .header-right div:nth-child(2){
+    color: var(--red);
+}
+.lobby-page-header .header-right div:nth-child(1){
+    color: #17A2B8;
+}
+
+.joined-member-container{
+    display: flex;
+    justify-items: flex-start;
+    width: 90%;
+    margin-top: 25px;
+    flex-direction: column;
+  }
+
+ul{
+    list-style: none;
+}
+li{
+    padding: 8px 0;
+
+    
+}
+li:before {    
+    font-family: 'FontAwesome';
+    content: '\f21a';
+    padding-right: 10px;
+    color: var(--lightblue);
+    
+}
+.cmp-joined-member{
+    display: flex;
+    flex-direction: row;
+    height: 40vh;
+    overflow: auto;
+}
+.member-list-div, .lobby-chat-container{
+    height: 100%;
+    background-color: var(--lightgrey);
+    border-radius: 10px;
+    font-size: 20px;
+
+}
+.cmp-host-name{
+    color: var(--yellow);
+    font-size: 16px;
+}
+.member-list-div{
+    width: 40%;
+    
+    
+    padding-left: 10px;
+    overflow-y: auto;
+    margin-right: 20px;
+}
+.lobby-chat-container{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+}
+.input-message-container,.cmp-lobby-chat{
+    
+    width: 96%;
+    border-radius: 5px;
+    margin: 10px;
+    opacity: 0.6;
+} 
+.input-message-container{
+    background-color: white;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+}
+.input-message-container div{
+    margin-left: 16px;
+    width: 85%;
+}
+.input-message-container input:focus{
+    border: none;
+}
+.input-message-container>i{
+    margin-right: 16px;
+    color: red !important;
+    cursor: pointer;
+}
+.input-message-container i{
+    color: var(--lightblue);
+}
+.cmp-input-message{
+    color: var(--black);
+    background-color: white;
+    height: 50px;
+    width: 100%;
+
+}
+.cmp-lobby-chat{
+    overflow-y: auto;
+}
+.lobby-chats{
+    background-color: #005262;
+    white-space: normal;
+    color: white;
+    padding: 10px 5px;
+    margin: 5px;
+    border-radius: 5px;
+    width: fit-content;
+}
+fieldset{
+    width: fit-content;
+    border: none;
+    margin-bottom: 10px;
+
+}
+legend{
+    font-size: 16px;
+    letter-spacing: 2px;
+}
+
+.lobby-notification{
+    width: 90%;
+    margin-top: 10px;
+}
+.lobby-notification span{
+    padding: 0 10px;
+}
+.start-game{
+    margin-top: 10px;
+}

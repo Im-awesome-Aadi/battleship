@@ -1,40 +1,46 @@
 
-
+:root{
+    --black :#020202;
+    --lightblack : #1C1C1C;
+    --lightgrey :#363636;
+    --darkgrey : #6C757D;
+    --lightpurple : #4609C2;
+    --darkpurple :#5004B5;
+    --darkblue : #007BFF;
+    --lightblue:#17A2B8;
+    --red :#DC3545;
+    --yellow : #FFC107;
+}
 *{
     letter-spacing: 1px;
     font-family: 'Special Elite', cursive;
     
+    margin: 0;
+    padding: 0;
 }
 
 
 body{
     font-family: 'Special Elite', cursive;
-    background-color: #020202;
+    background-color: var(--black);
     margin:0;    
 }
 div{
     color: white;
 }
-p{
-    margin: 0;
-}
-ul{
-    padding: 0;
-}
 input,button{
     font-family: 'Special Elite', cursive;
     letter-spacing: 4px;
     font-size: 16px;
-    
+    border: none;
     box-sizing: border-box;
     width: 15rem;
     padding-left: 15px;
 }
 button {
-    --c: #4609C2;
-    color: var(--c);
-    background: #020202;
-    border: 1px solid var(--c);
+    color: var(--lightpurple);
+    background: var(--black);
+    border: 1px solid var(--lightpurple);
     
     text-transform: uppercase;
     font-weight: bold;
@@ -50,7 +56,9 @@ button {
     font-weight: 600;
     padding: 10px;
 }
-
+input:focus, textarea:focus, select:focus{
+    outline: none;
+}
 button span {
     position: absolute;
     width: 25%;
@@ -75,10 +83,10 @@ button:hover span {
     transform: translateY(0) scale(2);
 }
 button span:nth-child(1),button span:nth-child(2),button span:nth-child(3),button span:nth-child(4){
-    background: #4609C2;
-    background: -webkit-linear-gradient(bottom right, #4609C2, #5004B5);
-    background: -moz-linear-gradient(bottom right, #4609C2, #5004B5);
-    background: linear-gradient(to top left, #4609C2, #5004B5);
+    background: var(--lightpurple);
+    background: -webkit-linear-gradient(bottom right, var(--lightpurple), var(--darkpurple));
+    background: -moz-linear-gradient(bottom right, var(--lightpurple), var(--darkpurple));
+    background: linear-gradient(to top left, var(--lightpurple), var(--darkpurple));
 
 }
 button span:nth-child(1) {
