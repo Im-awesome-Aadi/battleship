@@ -1,5 +1,5 @@
 const dbService = require('../service/db');
-//require('../service/socket');
+require('../service/socket');
 
 /* GET REQUEST FOR HOME PAGE  
    /
@@ -13,7 +13,7 @@ exports.getHomePage= (req,res)=>{
 */
 exports.getLobbyPage = async(req,res)=>{
     
-    /*
+    
     let userName = req.cookies.userName;
     let returnedLobby = await dbService.getCurrentLobby(req.params.lobbyId);
     if(returnedLobby){
@@ -24,9 +24,11 @@ exports.getLobbyPage = async(req,res)=>{
     }else{
         return res.redirect('/');
     }
-    */
+    
+   /*
     let userName = req.cookies.userName;
     res.render('lobby-page',{
         lobbyId:'QWERTY',userName
     });
+    */
 }

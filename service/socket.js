@@ -14,8 +14,7 @@ Server.io.on('connection', function(socket){
         
     })
     socket.on('join-room',async()=>{
-        console.log("user trying to join room");
-        console.log(`${userName} joined ${lobbyId}`);
+        
         socket.join(lobbyId);
         
         let currentLobby = await dbService.getCurrentLobby(lobbyId);
@@ -27,14 +26,22 @@ Server.io.on('connection', function(socket){
         socket.emit('joined',currentLobby);
         
         
-        socket.broadcast.to(lobbyId).emit('user-added',currentLobby);
+        socket.broadcast.to(lobbyId).emit('user-added',currentLobby,userName);
+    });
+
+    socket.on('send-msg',(data)=>{
+            console.log('received msg from client');
+            console.log(data);
+            socket.broadcast.to(lobbyId).emit('recd-msg',data);
     });
   
     socket.on('disconnect', async()=>{
         
         
         let currentLobby = await dbService.getCurrentLobby(lobbyId);
-
+        let currentHost = currentLobby.hostName;
+        console.log(currentHost);
+        console.log(currentLobby);
         let playerIndex=0;
         if(currentLobby){
             for(let i=0;i<currentLobby.players.length;i++){
@@ -43,9 +50,14 @@ Server.io.on('connection', function(socket){
                     break;
                 }
             }
+ 
             currentLobby.players.splice(playerIndex,1);
+            if(currentHost == userName){
+                currentLobby.hostName = currentLobby.players[0];
+            }
+            console.log(currentLobby);
             currentLobby.save();
-            socket.broadcast.to(lobbyId).emit('player-left',currentLobby);
+            socket.broadcast.to(lobbyId).emit('player-left',currentLobby,userName);
         }
 
         console.log(`${userName} disconnected from ${lobbyId}`);

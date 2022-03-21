@@ -2,7 +2,7 @@ const Server = require('./service/server')
 const model = require('./model/lobby')
 const homeRoute = require('./route/home-page')
 const cookieRoute = require('./route/cookie')
-//require('./utils/db')
+require('./utils/db')
 
 
 Server.app.use('/',homeRoute);

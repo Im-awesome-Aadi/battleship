@@ -32,7 +32,7 @@
             <div class="header-right">
                 <div>
                     <i class='fa fa-user' ></i>
-                    <span class="header-right-text">Aditya</span>
+                    <span class="header-right-text"><%= userName%></span>
                 </div>
                 <div>
                     <i class='fa fa-power-off' ></i>
@@ -52,36 +52,11 @@
             <div class="cmp-joined-member">
                 <div class="member-list-div">
                     <ul class="member-list">
-                        <li><div>Aditya <span class="cmp-host-name">(Host)</div> 
-                            <input type="checkbox" name="a" id="">
-                        </li>
-                        <li>
-                            <div>Shashank</div>
-                            <input type="checkbox" name="b" id="">
-                        </li>
-                        <li>
-                            <div>JayaLaksmhi</div>
-                            <input type="checkbox" name="c" id="">
-                        </li>
-                        <li>
-                            <div>Deepnanada</div>
-                            <input type="checkbox" name="d" id="">
-                        </li>
                     </ul>
                 </div>
                 <div class="lobby-chat-container">
                     <div class="cmp-lobby-chat">
-                        <fieldset>
-                            <legend>
-                    <i class='fa fa-user' ></i>Aditya</legend>
-                            <div class="green-alert-box">Hello Everybody</div>
-                        </fieldset>
-                        <fieldset>
-                            <legend>
-                    <i class='fa fa-user' ></i>Ritik</legend>
-                            <div class="red-alert-box">Am i audible</div>
-                        </fieldset>
-                        
+                       
                     </div>
                     <div class="input-message-container">
                         <div>
@@ -106,6 +81,11 @@
     
     <script src="/socket.io/socket.io.js"></script>
     <script src="/js/common/boilerplate.js"></script>
-    <script src="/js/lobby-page.js"></script>
+    <script src="/js/lobby/dom.js"></script>
+    <script src="/js/lobby/socket.js"></script>
+    <script src="/js/lobby/helper.js"></script>
+<!--
+    <script src="/js/lobby-socket.js"></script>
+    <script src="/js/lobby-page.js"></script> -->
 </body>
 </html>
