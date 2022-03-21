@@ -1,7 +1,7 @@
 
 .header{
     background-color:var(--lightblack);
-    height: 75px;
+    height: 70px;
     width: 100%;
     border-radius: 0 0 10px 10px;
     display: flex;

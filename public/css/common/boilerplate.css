@@ -39,7 +39,7 @@ input,button{
 }
 button {
     color: var(--lightpurple);
-    background: var(--black);
+    background: transparent;
     border: 1px solid var(--lightpurple);
     
     text-transform: uppercase;
@@ -78,7 +78,10 @@ button:hover {
     
     
 }
-
+.inactive-button{
+    pointer-events: none;
+    display: none;
+}
 button:hover span {
     transform: translateY(0) scale(2);
 }

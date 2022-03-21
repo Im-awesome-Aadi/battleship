@@ -40,51 +40,46 @@
                 </div>
             </div>
         </div>
-        <div class="cmp-lobby-id">Lobby ID : <%= lobbyId%></div>
-        
+  
         <div class="lobby-notification">
-            <span>Someone has joined the chat</span>
-            <span>Someone has joined the chat</span>
         </div>
         <div class="joined-member-container">
             
-            <div class="normal-text">Joined Members : 10</div>
+            <div class="joined-member-header">
+                <div class="normal-text">Joined Members : 10</div>
+                <small>Select 2 players (as captain) to continue</small>
+            </div>
             <div class="cmp-joined-member">
                 <div class="member-list-div">
                     <ul class="member-list">
-                        <li>Aditya <span class="cmp-host-name">(Host)</span></li>
-                        <li>Aditya</li>
-                        <li>Aditya</li>
-                        <li>Aditya</li>
-                        <li>Aditya</li>
-                        <li>Aditya</li>
-                        <li>Aditya</li>
-                        <li>Aditya</li>
-                        <li>Aditya</li>
-                        <li>Aditya</li>
+                        <li><div>Aditya <span class="cmp-host-name">(Host)</div> 
+                            <input type="checkbox" name="a" id="">
+                        </li>
+                        <li>
+                            <div>Shashank</div>
+                            <input type="checkbox" name="b" id="">
+                        </li>
+                        <li>
+                            <div>JayaLaksmhi</div>
+                            <input type="checkbox" name="c" id="">
+                        </li>
+                        <li>
+                            <div>Deepnanada</div>
+                            <input type="checkbox" name="d" id="">
+                        </li>
                     </ul>
                 </div>
                 <div class="lobby-chat-container">
                     <div class="cmp-lobby-chat">
                         <fieldset>
-                            <legend>Aditya</legend>
-                            <div class="lobby-chats">Hello Everybody</div>
+                            <legend>
+                    <i class='fa fa-user' ></i>Aditya</legend>
+                            <div class="green-alert-box">Hello Everybody</div>
                         </fieldset>
                         <fieldset>
-                            <legend>Ritik</legend>
-                            <div class="lobby-chats">Am i audible</div>
-                        </fieldset>
-                        <fieldset>
-                            <legend>Akash</legend>
-                            <div class="lobby-chats">sometime i am not</div>
-                        </fieldset>
-                        <fieldset>
-                            <legend>Shahsank</legend>
-                            <div class="lobby-chats">is this good?</div>
-                        </fieldset>
-                        <fieldset>
-                            <legend>Aditya</legend>
-                            <div class="lobby-chats">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem eos blanditiis reprehenderit nesciunt sapiente! Quod neque, ratione similique nihil qui repudiandae cumque excepturi saepe tempore commodi, quos laborum aperiam incidunt.</div>
+                            <legend>
+                    <i class='fa fa-user' ></i>Ritik</legend>
+                            <div class="red-alert-box">Am i audible</div>
                         </fieldset>
                         
                     </div>
@@ -93,7 +88,7 @@
                             <i class="fa fa-comments"></i>
                         <input class="cmp-input-message" placeholder="Type here to chat">
                         </div>
-                        <i class="fa fa-paper-plane"></i>
+                        <i class="fa fa-paper-plane send-chat"></i>
 
                     </div>
                 
@@ -102,12 +97,11 @@
                 
             </ul>
         </div>
-        <button class="start-game">Start Game
-            <span></span><span></span><span></span><span></span>
-
-
-
-        </button>
+        <div>
+            <button class="start-game inactive-button">Start Game
+                <span></span><span></span><span></span><span></span>
+            </button>
+        </div>
     </div>
     
     <script src="/socket.io/socket.io.js"></script>
