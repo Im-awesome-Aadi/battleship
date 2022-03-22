@@ -8,9 +8,10 @@
     width: 90%;
     padding:20px 0;
     background-color: var(--lightblack);
-    margin: 2.5% auto;
+    margin: 1% auto 0.5% auto;
     border-radius: 10px;
     justify-content: space-evenly;
+    animation: 10s waving forwards infinite;
     animation: 0.5s fade ease-in;
     white-space: nowrap;
     height: fit-content;

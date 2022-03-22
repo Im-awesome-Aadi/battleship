@@ -115,7 +115,17 @@
     animation-iteration-count: infinite;
     animation-delay: 0.5s;
   }
-  
+  @media only screen and (max-width:550px) {
+    .game-name-box{
+      width: 8rem;
+      margin-left: 10px;
+      padding: 5px;
+    }
+    .game-name{
+      font-size: 18px;
+      white-space: normal;
+    }
+  }
   @-webkit-keyframes pulsating {
     0% {opacity: 0.0;}
     50% {opacity: 0.2;}

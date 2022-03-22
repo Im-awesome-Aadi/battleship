@@ -24,7 +24,7 @@
     margin: 5% auto;
     border-radius: 10px;
     justify-content: space-evenly;
-    animation: 0.5s fade ease-in;
+    animation: 0.5s fade ease-in,5s waving forwards infinite;;
     white-space: nowrap;
     overflow: hidden;
 

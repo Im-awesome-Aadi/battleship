@@ -7,7 +7,9 @@ require('./utils/db')
 
 Server.app.use('/',homeRoute);
 Server.app.use('/cookie',cookieRoute);
-
+Server.app.use('/error',function(req,res){
+    res.render('error');
+})
 
 
 Server.app.get('/api', async(req,res)=>{
