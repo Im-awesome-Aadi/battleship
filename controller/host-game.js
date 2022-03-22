@@ -1,3 +1,6 @@
+/**
+ * Host Game Controller
+ */
 const misc = require('../utils/misc')
 const lobbyModel = require('../model/lobby');
 /*

@@ -14,7 +14,7 @@ exports.setCookie=(req,res)=>{
 
 /*
     GET REQUEST TO FETCH COOKIE
-    /cookie/set
+    /cookie/get
 */
 exports.getCookie=(req,res)=>{
     if(req.cookies.userName === undefined){

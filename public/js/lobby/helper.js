@@ -1,12 +1,30 @@
 // HELPER FUNCTIONS
-function updateJoinedList(playerList){
-    $('.member-list').html('')
-    $('.member-list').append(`<li><div>${playerList[0]} (host)</div><input type="checkbox" name=${playerList[0]}></li>`);
-    for(let i=1;i<playerList.length;i++){
-        $('.member-list').append(`<li><div>${playerList[i]}</div><input type="checkbox" name=${playerList[i]}></li>`);
+function updateJoinedList(currentLobby){
+    const players = currentLobby.players;
+    $('.member-list').html('');
+    $('.member-list').append(`<li><div>${players[0]} (host)</div><input type="checkbox" name=${players[0]}></li>`);
+    for(let i=1;i<players.length;i++){
+        $('.member-list').append(`<li><div>${players[i]}</div><input type="checkbox" name=${players[i]}></li>`);
+    }
+    hostSetting(currentLobby);
+    updatePlayerCount(players.length);
+}
+function hostSetting(currentLobby){
+    if(currentLobby.hostName != userName){
+        $('.member-list input').addClass('hide-ele');
+        $('.start-game').addClass('hide-ele');
+        $('.joined-member-header small').addClass('hide-ele');
+    }else{
+        $('.member-list input').removeClass('hide-ele');   
+        $('.start-game').removeClass('hide-ele');
+        $('.joined-member-header small').removeClass('hide-ele');
+
     }
 }
 
+function updatePlayerCount(totalPlayers){
+    $('.joined-member-header .total-players').text(totalPlayers);
+}
 function getRandomColorBox(){
     let colorBox =['blue-alert-box','red-alert-box','green-alert-box','yellow-alert-box'];
     let randomIndex = Math.floor(Math.random()*colorBox.length);

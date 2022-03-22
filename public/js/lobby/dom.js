@@ -40,6 +40,9 @@ $(document.body).on('click','.cmp-joined-member input', () => {
 
    }
 });
+$('.lobby-page-header .header-right div:nth-child(2)').on('click',function(){
+    window.location.href = '/';
+})
 $('.start-game').on('click',function(){
     const selectedPlayers = $('.cmp-joined-member input[type="checkbox"]:checked');
     if(selectedPlayers.length<totalTeams){

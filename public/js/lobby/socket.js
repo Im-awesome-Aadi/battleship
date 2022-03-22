@@ -1,4 +1,4 @@
-// SOCKETS
+// CLIENT - SOCKETS
 const socket = io();
 socket.on('connect',()=>{
     console.log("conneected to server with id : " + socket.id);
@@ -8,21 +8,21 @@ socket.on('welcome',()=>{
     socket.emit('pass-user-data',{
         userName,lobbyId
     });
-    socket.emit('join-room');
+    socket.emit('join-lobby');
 
 });
 
 socket.on('joined',(currentLobby)=>{
     console.log("you have joined this lobby");
     console.log(currentLobby);
-    updateJoinedList(currentLobby.players);
+    updateJoinedList(currentLobby);
     setLobbyAlerts(0,null);
     
 })
 socket.on('user-added',(currentLobby,newPlayer)=>{
     
     console.log('user added');
-    updateJoinedList(currentLobby.players);
+    updateJoinedList(currentLobby);
     setLobbyAlerts(1,newPlayer);
     
 });
@@ -31,7 +31,7 @@ socket.on('player-left',(currentLobby,leftPlayer)=>{
     
     console.log('player-left')
     console.log(currentLobby);
-    updateJoinedList(currentLobby.players);
+    updateJoinedList(currentLobby);
     setLobbyAlerts(2,leftPlayer);
 
 });
