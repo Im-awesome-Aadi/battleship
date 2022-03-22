@@ -1,0 +1,16 @@
+.error-page-container{
+    display: flex;
+    flex-direction: column;
+    height: 50vh;
+    justify-content: space-around;
+    text-align: center;
+    margin: 2.5% 0;
+    animation: 0.5s fadeIn;
+}
+img{
+    height: 50px;
+    width: 50px;
+    transform: scale(5);
+    
+}
+
