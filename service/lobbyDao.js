@@ -2,7 +2,6 @@ const lobbyModel = require('../model/lobby');
 
 async function createLobby(lobbyId,hostName){
     try{
-        console.log("using dao");
         const newLobby = new lobbyModel({lobbyId ,hostName,players : []});
         return await newLobby.save();
     }catch(e){

@@ -1,4 +1,5 @@
 
+debugger;
 let userName="";
 fetchUserName();
 
@@ -27,15 +28,7 @@ $('.submit-name').on('click',async(e)=>{
         console.log("username set");
         showSecondCard();
         try {     
-            await fetch('/cookie/set', {
-              method: 'post',
-              headers: {'Content-Type': 'application/json'},
-              body: JSON.stringify({
-                
-                  userName: userName
-                
-              })
-            });
+            await setUserNameCookie(userName);
 
           } catch(err) {
             console.error(`Error: ${err}`);
@@ -46,12 +39,14 @@ $('.submit-name').on('click',async(e)=>{
         alert("Please Enter user name in required format");
     }
 });
+
+
 // Submit user Name
 var roomIDEle= $('#room-id');
 var roomId = document.getElementById('room-id');
 $('.join-room').on('click',(e)=>{
     e.preventDefault();
-    var enteredLobbyId = roomIDEle.val().toUpperCase();
+    const enteredLobbyId = roomIDEle.val().toUpperCase();
     if(validateLobbyID(enteredLobbyId)){
       window.location.href= `/lobby/${enteredLobbyId}`;
     }
@@ -62,20 +57,7 @@ $('.join-room').on('click',(e)=>{
 });
 
 $('#host-game').on('click',(e)=>{
-  e.preventDefault();
-  
+    e.preventDefault();
   window.location.href= '/host-game';
 });
 
-
-
-function showSecondCard(){
-  hideElement($('.home-page-card'));
-        showFlexElement($('.cmp-ready-to-play'));
-        showFlexElement($('.cmp-greet'));
-        $('.greet-text').text(userName);
-}
-function showFirstCard(){
-  hideElement($('.cmp-ready-to-play'));
-  hideElement($('.cmp-greet'));
-}

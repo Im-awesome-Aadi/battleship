@@ -23,3 +23,11 @@ function validateLobbyID(lobbyId){
     }
     return false;
 }
+async function setUserNameCookie(userName){
+    await fetch('/cookie/set', {
+      method: 'post',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({userName})
+    });
+}
+

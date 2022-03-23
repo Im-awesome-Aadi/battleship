@@ -17,6 +17,6 @@ exports.getLobbyPage = async(req,res)=>{
             lobbyId,userName
         });
     }else{
-        return res.redirect('/');
+        return res.redirect('/error');
     }
 }
