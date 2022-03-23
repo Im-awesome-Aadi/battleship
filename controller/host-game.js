@@ -1,21 +1,35 @@
 /**
  * Host Game Controller
  */
-const misc = require('../utils/misc')
-const lobbyModel = require('../model/lobby');
+const Utils = require('../service/utils');
+//const lobbyModel = require('../model/lobby');
+const lobbyDao = require('../service/lobbyDao');
 /*
     GET REQUEST FOR HOSTING A GAME
     /host-game
  */
 exports.getHostPage= async(req,res)=>{
+    let lobbyId = Utils.createLobbyId();
+    let createdLobby = await lobbyDao.createLobby(lobbyId,req.cookies.userName);
+    if(createdLobby){
+        res.redirect(`/lobby/${lobbyId}`);
+    }else{
+        res.redirect('/error');
+    }
 
-    let lobbyId = misc.createLobbyId();
+    /*
     const newLobby = new lobbyModel({
         lobbyId : lobbyId,
         hostName : req.cookies.userName,
         players : []
     });
-    await newLobby.save();
-    res.redirect(`/lobby/${lobbyId}`);
+    let isCreated = await lobbyModel.createLobby(newLobby);
+    console.log(isCreated);
+    if(isCreated){
+        res.redirect(`/lobby/${lobbyId}`);
+    }else{
+        res.redirect('/error');
+    }
+    */
 }
 

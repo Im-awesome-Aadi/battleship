@@ -1,36 +1,18 @@
+const lobbyModel = require('../model/lobby');
 
-const mongoose = require('mongoose');
-const schema = mongoose.Schema;
-
-const LobbySchema = new schema({
-    lobbyId:{
-        type: String,
-        required:true
-    },
-    hostName:{
-        type:String,
-        required:true
-    },
-    players:{
-        type:Array,
-        required:true
-    }
-});
-LobbySchema.statics.createLobby = async function(newLobby){
-
+async function createLobby(lobbyId,hostName){
     try{
+        console.log("using dao");
+        const newLobby = new lobbyModel({lobbyId ,hostName,players : []});
         return await newLobby.save();
     }catch(e){
         console.log('db error while creating lobby');
     }
-
 }
-LobbySchema.statics.getCurrentLobby= async function(cmpLobbyId){
-    
 
-    console.log(`finding lobby in DB model ${cmpLobbyId}`);
+async function getCurrentLobby(cmpLobbyId){
     try{
-        const result = await this.model('Lobby').find();
+        const result = await lobbyModel.find();
         for(let i=0;i<result.length;i++){
             if(result[i].lobbyId == cmpLobbyId){
                 console.log("room found " + result[i].lobbyId);
@@ -45,10 +27,10 @@ LobbySchema.statics.getCurrentLobby= async function(cmpLobbyId){
     }
 }
 
-LobbySchema.statics.addPlayer = async function(cmpLobbyId, userName){
+async function addPlayer(cmpLobbyId, userName){
     console.log("Adding player to the DB")
     try{
-        const currentLobby = await this.model('Lobby').getCurrentLobby(cmpLobbyId);
+        const currentLobby = await getCurrentLobby(cmpLobbyId);
         if(currentLobby){
             currentLobby.players.push(userName);
             currentLobby.save();
@@ -59,14 +41,14 @@ LobbySchema.statics.addPlayer = async function(cmpLobbyId, userName){
     }
 }
 
-LobbySchema.statics.removePlayer = async function(cmpLobbyId, userName){
+async function removePlayer(cmpLobbyId, userName){
     console.log("removing player from DB");
     try{
-        const currentLobby = await this.model('Lobby').getCurrentLobby(cmpLobbyId);
+        const currentLobby = await getCurrentLobby(cmpLobbyId);
         const currentHost = currentLobby.hostName;
         const totalPlayers = currentLobby.players.length;
         if(totalPlayers == 1){
-            await this.model('Lobby').deleteLobby(cmpLobbyId);
+            await deleteLobby(cmpLobbyId);
             return false;
         }
         let playerIndex=0;
@@ -89,10 +71,9 @@ LobbySchema.statics.removePlayer = async function(cmpLobbyId, userName){
     }
 }
 
-LobbySchema.statics.deleteLobby = async function(cmpLobbyId){
+async function deleteLobby(cmpLobbyId){
     console.log("deleting the lobby");
-    const currentLobby = await this.model('Lobby').getCurrentLobby(cmpLobbyId);
+    const currentLobby = await getCurrentLobby(cmpLobbyId);
     currentLobby.remove();
 }
-const Lobby = mongoose.model('Lobby', LobbySchema);
-module.exports = Lobby;
+module.exports = {createLobby, getCurrentLobby,addPlayer,removePlayer,deleteLobby};

@@ -1,7 +1,8 @@
 /**
  * SERVER SOCKET 
  */
-const lobbyModel = require('../model/lobby')
+//const lobbyModel = require('../model/lobby')
+const lobbyDao = require('../service/lobbyDao');
 const Server = require('./server');
 Server.io.on('connection', function(socket){
     let userName = "";
@@ -23,7 +24,7 @@ Server.io.on('connection', function(socket){
     socket.on('join-lobby',async()=>{
         
         socket.join(lobbyId);
-        let currentLobby = await lobbyModel.addPlayer(lobbyId,userName);
+        let currentLobby = await lobbyDao.addPlayer(lobbyId,userName);
         socket.emit('joined',currentLobby);
         socket.broadcast.to(lobbyId).emit('user-added',currentLobby,userName);
     });
@@ -36,7 +37,7 @@ Server.io.on('connection', function(socket){
   
     //Client disconnects from lobby
     socket.on('disconnect', async()=>{
-        let currentLobby = await lobbyModel.removePlayer(lobbyId,userName);
+        let currentLobby = await lobbyDao.removePlayer(lobbyId,userName);
         if(currentLobby){
             socket.broadcast.to(lobbyId).emit('player-left',currentLobby,userName);
         }
