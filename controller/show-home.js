@@ -1,3 +1,4 @@
+const pName = require('../utils/page-names')
 /**
  * Home Page Controller
  */
@@ -6,5 +7,7 @@
 */
 exports.getHomePage= (req,res)=>{
     
-    res.render('home-page');
+    res.render('home-page',{
+        pTitle : pName.HOME
+    });
 }

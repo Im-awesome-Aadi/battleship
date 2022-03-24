@@ -49,7 +49,7 @@ $('.start-game').on('click',function(){
         
     }
     selectedPlayers.each(function(index,ele){
-        console.log($(ele).attr('name'));
+ 
     })
 });
 

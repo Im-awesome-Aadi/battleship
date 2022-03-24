@@ -1,7 +1,7 @@
 // CLIENT - SOCKETS
 const socket = io();
 socket.on('connect',()=>{
-    console.log("conneected to server with id : " + socket.id);
+    console.log('conneected to server with id : ' + socket.id);
 });
 socket.on('welcome',()=>{
     
@@ -13,25 +13,24 @@ socket.on('welcome',()=>{
 });
 
 socket.on('joined',(currentLobby)=>{
-    console.log("you have joined this lobby");
-    console.log(currentLobby);
-    updateJoinedList(currentLobby);
+
+    updateJoinedList(currentLobby.players);
+    hostSetting(socket.id,currentLobby.hostId);
     setLobbyAlerts(0,null);
     
 })
 socket.on('user-added',(currentLobby,newPlayer)=>{
-    
-    console.log('user added');
-    updateJoinedList(currentLobby);
+
+    updateJoinedList(currentLobby.players);
+    hostSetting(socket.id,currentLobby.hostId);
     setLobbyAlerts(1,newPlayer);
     
 });
 
 socket.on('player-left',(currentLobby,leftPlayer)=>{
     
-    console.log('player-left')
-    console.log(currentLobby);
-    updateJoinedList(currentLobby);
+    updateJoinedList(currentLobby.players);
+    hostSetting(socket.id,currentLobby.hostId);
     setLobbyAlerts(2,leftPlayer);
 
 });

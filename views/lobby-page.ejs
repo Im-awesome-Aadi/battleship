@@ -1,93 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/common/animation.css" type="text/css">
-    <link rel="stylesheet" href="/css/common/header.css" type="text/css">
-    <link rel="stylesheet" href="/css/common/wave.css" type="text/css">
-    <link rel="stylesheet" href="/css/common/scrollbar.css" type="text/css">
-    <link rel="stylesheet" href="/css/home-page.css" type="text/css">
-    <link rel="stylesheet" href="/css/lobby-page.css" type="text/css">
-    <link rel="stylesheet" href="/css/common/boilerplate.css" type="text/css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Document</title>
-    <style>
-     
-    </style>
-</head>
-<body>
-
-    <%- include('./common/header') %> 
-      
-    <div class= "hidden-lobby-id" ><%= lobbyId%></div>
-    <div class= "hidden-username" ><%= userName%></div>
-    <div class="lobby-page-card">
-        <div class="header lobby-page-header fancy-heading">
+   <head>
+      <%- include('./common/meta') %>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <link rel="stylesheet" href="/css/home-page.css" type="text/css">
+      <link rel="stylesheet" href="/css/lobby-page.css" type="text/css">
+      <title><%= pTitle%></title>
+      <style>
+      </style>
+   </head>
+   <body>
+      <%- include('./common/header') %> 
+      <div class= "hidden-lobby-id" ><%= lobbyId%></div>
+      <div class= "hidden-username" ><%= userName%></div>
+      <div class="lobby-page-card">
+         <div class="header lobby-page-header fancy-heading">
             <div class="">LOBBY</div>
             <div class="header-right">
-                <div>
-                    <i class='fa fa-user' ></i>
-                    <span class="header-right-text"><%= userName%></span>
-                </div>
-                <div>
-                    <i class='fa fa-power-off' ></i>
-                    <span class="header-right-text">Leave</span>
-                </div>
+               <div>
+                  <i class='fa fa-user' ></i>
+                  <span class="header-right-text"><%= userName%></span>
+               </div>
+               <div>
+                  <i class='fa fa-power-off' ></i>
+                  <span class="header-right-text">Leave</span>
+               </div>
             </div>
-        </div>
-  
-        <div class="lobby-notification">
-        </div>
-        <div class="joined-member-container">
-            
+         </div>
+         <div class="lobby-notification">
+         </div>
+         <div class="joined-member-container">
             <div class="joined-member-header">
-                <div class="normal-text">Joined Members : 10</div>
-                <small>Select 2 players (as captain) to continue</small>
+               <div class="normal-text">Joined Members : 10</div>
+               <small>Select 2 players (as captain) to continue</small>
             </div>
             <div class="cmp-joined-member">
-                <div class="member-list-div">
-                    <ul class="member-list">
-                    </ul>
-                </div>
-                <div class="lobby-chat-container">
-                    <div class="cmp-lobby-chat">
-                       
-                    </div>
-                    <div class="input-message-container">
-                        <div>
-                            <i class="fa fa-comments"></i>
+               <div class="member-list-div">
+                  <ul class="member-list">
+                  </ul>
+               </div>
+               <div class="lobby-chat-container">
+                  <div class="cmp-lobby-chat">
+                  </div>
+                  <div class="input-message-container">
+                     <div>
+                        <i class="fa fa-comments"></i>
                         <input class="cmp-input-message" placeholder="Type here to chat">
-                        </div>
-                        <i class="fa fa-paper-plane send-chat"></i>
-
-                    </div>
-                
-                </div>
+                     </div>
+                     <i class="fa fa-paper-plane send-chat"></i>
+                  </div>
+               </div>
             </div>
-                
             </ul>
-        </div>
-        <div>
+         </div>
+         <div>
             <button class="start-game inactive-button">Start Game
-                <span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span>
             </button>
-        </div>
-    </div>
-    
-    <%- include('./common/footer') %> 
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="/js/common/boilerplate.js"></script>
-    <script src="/js/lobby/dom.js"></script>
-    <script src="/js/lobby/socket.js"></script>
-    <script src="/js/lobby/helper.js"></script>
-<!--
-    <script src="/js/lobby-socket.js"></script>
-    <script src="/js/lobby-page.js"></script> -->
-</body>
+         </div>
+      </div>
+      <%- include('./common/footer') %> 
+      <%- include('./common/scripts') %>
+      <script src="/js/lobby/dom.js"></script>
+      <script src="/js/lobby/socket.js"></script>
+      <script src="/js/lobby/helper.js"></script>
+   </body>
 </html>

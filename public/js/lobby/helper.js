@@ -1,16 +1,22 @@
 // HELPER FUNCTIONS
-function updateJoinedList(currentLobby){
-    const players = currentLobby.players;
+function updateJoinedList(playersList){
     $('.member-list').html('');
-    $('.member-list').append(`<li><div>${players[0]} (host)</div><input type="checkbox" name=${players[0]}></li>`);
-    for(let i=1;i<players.length;i++){
-        $('.member-list').append(`<li><div>${players[i]}</div><input type="checkbox" name=${players[i]}></li>`);
+    $('.member-list').append(`<li><div>${playersList[0].userName} (host)</div><input type="checkbox" name=${playersList[0].userName}></li>`);
+    for(let i=1;i<playersList.length;i++){
+        $('.member-list').append(`<li><div>${playersList[i].userName}</div><input type="checkbox" name=${playersList[i].userName}></li>`);
     }
-    hostSetting(currentLobby);
-    updatePlayerCount(players.length);
+    updatePlayerCount(playersList.length);
 }
-function hostSetting(currentLobby){
-    if(currentLobby.hostName != userName){
+
+function getNameFromId(currentLobby,userId){
+    for(let i=0;i<currentLobby.players.length;i++){
+        if(currentLobby.players[i].userId == userId){
+            return currentLobby.players[i].userName;
+        }
+    }
+}
+function hostSetting(userId,hostId){
+    if(userId != hostId){
         $('.member-list input').addClass('hide-ele');
         $('.start-game').addClass('hide-ele');
         $('.joined-member-header small').addClass('hide-ele');

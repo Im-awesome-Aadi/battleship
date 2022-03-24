@@ -1,10 +1,11 @@
 const lobbyModel = require('../model/lobby');
 
-async function createLobby(lobbyId,hostName){
+async function createLobby(lobbyId,hostId){
     try{
-        const newLobby = new lobbyModel({lobbyId ,hostName,players : []});
+        const newLobby = new lobbyModel({lobbyId ,hostId,players : []});
         return await newLobby.save();
     }catch(e){
+        console.log(e);
         console.log('db error while creating lobby');
     }
 }
@@ -14,24 +15,24 @@ async function getCurrentLobby(cmpLobbyId){
         const result = await lobbyModel.find();
         for(let i=0;i<result.length;i++){
             if(result[i].lobbyId == cmpLobbyId){
-                console.log("room found " + result[i].lobbyId);
                 return result[i];
             }
             
         }
-        console.log("not found");
         return false;    
     }catch(err){
         console.log('db error while finding lobby');
     }
 }
 
-async function addPlayer(cmpLobbyId, userName){
-    console.log("Adding player to the DB")
+async function addPlayer(cmpLobbyId, userName,userId){
     try{
         const currentLobby = await getCurrentLobby(cmpLobbyId);
         if(currentLobby){
-            currentLobby.players.push(userName);
+            if(currentLobby.hostId == ''){
+                currentLobby.hostId = userId;
+            }
+            currentLobby.players.push({userName,userId});
             currentLobby.save();
         }
         return currentLobby;
@@ -40,11 +41,11 @@ async function addPlayer(cmpLobbyId, userName){
     }
 }
 
-async function removePlayer(cmpLobbyId, userName){
-    console.log("removing player from DB");
+async function removePlayer(cmpLobbyId, userId){
+
     try{
         const currentLobby = await getCurrentLobby(cmpLobbyId);
-        const currentHost = currentLobby.hostName;
+        const currentHostId = currentLobby.hostId;
         const totalPlayers = currentLobby.players.length;
         if(totalPlayers == 1){
             await deleteLobby(cmpLobbyId);
@@ -53,14 +54,14 @@ async function removePlayer(cmpLobbyId, userName){
         let playerIndex=0;
         if(currentLobby){
             for(let i=0;i<totalPlayers;i++){
-                if(currentLobby.players[i]== userName){
+                if(currentLobby.players[i].userId== userId){
                     playerIndex=i;
                     break;
                 }
             }
             currentLobby.players.splice(playerIndex,1);
-            if(currentHost == userName){
-                currentLobby.hostName = currentLobby.players[0];
+            if(currentHostId == userId){
+                currentLobby.hostId = currentLobby.players[0].userId;
             }
             currentLobby.save();
         }
@@ -71,7 +72,7 @@ async function removePlayer(cmpLobbyId, userName){
 }
 
 async function deleteLobby(cmpLobbyId){
-    console.log("deleting the lobby");
+
     const currentLobby = await getCurrentLobby(cmpLobbyId);
     currentLobby.remove();
 }

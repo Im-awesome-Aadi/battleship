@@ -1,15 +1,11 @@
-
-debugger;
-let userName="";
+let userName='';
 fetchUserName();
 
 async function fetchUserName() {
-  console.log("Checkibnf user name n cookie")
   var response = await fetch('/cookie/get');
   var responseText = await response.json();
   if(responseText){
     userName = responseText;
-    console.log(userName)
     showSecondCard();
   }
   else{
@@ -24,8 +20,6 @@ $('.submit-name').on('click',async(e)=>{
     
     if(validateUserName(enteredNameEle.val())){
         userName = enteredNameEle.val();
-        
-        console.log("username set");
         showSecondCard();
         try {     
             await setUserNameCookie(userName);
@@ -36,7 +30,7 @@ $('.submit-name').on('click',async(e)=>{
         
         
     }else{
-        alert("Please Enter user name in required format");
+        alert('Please Enter user name in required format');
     }
 });
 
@@ -51,7 +45,7 @@ $('.join-room').on('click',(e)=>{
       window.location.href= `/lobby/${enteredLobbyId}`;
     }
     else{
-      alert("Invalid Lobby Id");
+      alert('Invalid Lobby Id');
   }
     
 });

@@ -2,8 +2,8 @@
  * Lobby Page Controller
  */
 
-//const lobbyModel = require('../model/lobby');
-const lobbyDao = require('../service/lobbyDao');
+const pName = require('../utils/page-names')
+const lobbyDao = require('../service/lobby-dao');
 require('../service/socket');
 /* GET REQUEST FOR LOBBY PAGE  
    /lobby/:id
@@ -14,9 +14,10 @@ exports.getLobbyPage = async(req,res)=>{
     if(returnedLobby){
         lobbyId = req.params.lobbyId;
         return res.render('lobby-page',{
+            pTitle: pName.LOBBY,
             lobbyId,userName
         });
     }else{
-        return res.redirect('/error');
+        return res.redirect('/error/404');
     }
 }
