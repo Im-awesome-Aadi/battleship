@@ -1,54 +1,40 @@
-const dbService = require('../service/db');
-const Server = require('./server');
-Server.io.on('connection', function(socket){
-    let userName = "";
-    let lobbyId = "";
-    console.log("server "+socket.id);
-    
-    socket.emit('welcome') // Server sent this to the connected client
-    socket.on('pass-user-data',(clientData)=>{
-        console.log('client sent me data')
-        console.log(clientData);
+/**
+ * server SOCKET 
+ */
+//const lobbyModel = require('../model/lobby')
+const lobbyDao = require('./lobby-dao');
+const server = require('./server');
+const event = require('../utils/socket-strings');
+server.io.on(event.CONNECTION, function(socket){
+    let userName = '';
+    let lobbyId = '';    
+    socket.emit(event.WELCOME) // server sent this to the connected client
+
+    // Saving the clientdata received from frontend(user)
+    socket.on(event.PASSUSERDATA,(clientData)=>{
         userName = clientData.userName;
         lobbyId = clientData.lobbyId;
         
-    })
-    socket.on('join-room',async()=>{
-        console.log("user trying to join room");
-        console.log(`${userName} joined ${lobbyId}`);
+    });
+
+    // Client connects to the lobby
+    socket.on(event.JOINLOBBY,async()=>{
         socket.join(lobbyId);
-        
-        let currentLobby = await dbService.getCurrentLobby(lobbyId);
-        
-        if(currentLobby){
-            currentLobby.players.push(userName);
-            currentLobby.save();
-        }
-        socket.emit('joined',currentLobby);
-        
-        
-        socket.broadcast.to(lobbyId).emit('user-added',currentLobby);
+        let currentLobby = await lobbyDao.addPlayer(lobbyId,userName,socket.id);
+        socket.emit(event.JOINED,currentLobby);
+        socket.broadcast.to(lobbyId).emit(event.PLAYERADDED,currentLobby,userName);
+    });
+
+    socket.on(event.SENDCHAT,(chat)=>{
+            socket.broadcast.to(lobbyId).emit(event.RECDCHAT,chat);
     });
   
-    socket.on('disconnect', async()=>{
-        
-        
-        let currentLobby = await dbService.getCurrentLobby(lobbyId);
-
-        let playerIndex=0;
+    //Client disconnects from lobby
+    socket.on(event.DISCONNECT, async()=>{
+        let currentLobby = await lobbyDao.removePlayer(lobbyId,socket.id);
         if(currentLobby){
-            for(let i=0;i<currentLobby.players.length;i++){
-                if(currentLobby.players[i]== userName){
-                    playerIndex=i;
-                    break;
-                }
-            }
-            currentLobby.players.splice(playerIndex,1);
-            currentLobby.save();
-            socket.broadcast.to(lobbyId).emit('player-left',currentLobby);
+            socket.broadcast.to(lobbyId).emit(event.PLAYERLEFT,currentLobby,userName);
         }
-
-        console.log(`${userName} disconnected from ${lobbyId}`);
     });
 
 });

@@ -6,12 +6,11 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const path = require('path');
 
-
 app.use(cookieParser());
 app.use(bodyParser.json());
-
 app.use(Express.static(path.join(__dirname,'../', 'public')));
 app.set('view engine','ejs');
+
 module.exports = {
-    Express,app,server,io,cookieParser,bodyParser
+    app,server,io
 }

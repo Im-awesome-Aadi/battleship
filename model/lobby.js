@@ -7,9 +7,8 @@ const LobbySchema = new schema({
         type: String,
         required:true
     },
-    hostName:{
+    hostId:{
         type:String,
-        required:true
     },
     players:{
         type:Array,

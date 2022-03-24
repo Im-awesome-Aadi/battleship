@@ -1,18 +1,19 @@
-const misc = require('../utils/misc')
-const lobbyModel = require('../model/lobby');
+/**
+ * Host Game Controller
+ */
+const Utils = require('../service/misc');
+const lobbyDao = require('../service/lobby-dao');
 /*
     GET REQUEST FOR HOSTING A GAME
     /host-game
  */
 exports.getHostPage= async(req,res)=>{
-
-    let lobbyId = misc.createLobbyId();
-    const newLobby = new lobbyModel({
-        lobbyId : lobbyId,
-        hostName : req.cookies.userName,
-        players : []
-    });
-    await newLobby.save();
-    res.redirect(`/lobby/${lobbyId}`);
+    let lobbyId = Utils.createLobbyId();
+    let createdLobby = await lobbyDao.createLobby(lobbyId,'');
+    if(createdLobby){
+        res.redirect(`/lobby/${lobbyId}`);
+    }else{
+        res.redirect('/error/404');
+    }
 }
 
