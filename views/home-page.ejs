@@ -21,22 +21,42 @@
       <div class="home-page-card">
          <div class="cmp-enter-name">
             <p class="normal-text fancy-heading">What should we call you?</p>
-            <input id="user-name" type="text" placeholder="Enter your name">
-            <button class="submit-name">SUBMIT
-            <span></span><span></span><span></span><span></span>
-            </button>
+            <div>
+            <input id="user-name" type="text" placeholder="Enter your name" autocomplete="off" >
+            <div class="user-name-rules">
+               <ul>
+                  <li>Start with an alphabet</li>
+                  <li>must be 4-20 characters long</li>
+                  <li>No special characters, spaces</li>
+                  <li>Only underscores allowed</li>
+               </ul>
+            </div>
+            </div>
+            <div>
+               <button class="submit-name">SUBMIT
+                  <span></span><span></span><span></span><span></span>
+                  </button>
+              
+            </div>
+
          </div>
       </div>
       <div class="cmp-ready-to-play">
-         <p class="normal-text fancy-heading">Let's Play</p>
-         <div class="cmp-have-room">
-            <input id="room-id" type="text" placeholder="Enter room ID here">
-            <form method="post" action="/join-room">
-               <button class="join-room">Join Lobby
-               <span></span><span></span><span></span><span></span>
-               </button>
-            </form>
-         </div>
+         <p class="normal-text fancy-heading">Choose how to play</p>
+         <form method="post" action="/join-room">
+            <button class="">vs Computer
+            <span></span><span></span><span></span><span></span>
+            </button>
+         </form>
+         <div>
+         <button class="have-lobby">Have Lobby ID?
+            <span></span><span></span><span></span><span></span>
+            </button>
+           <div class="hide-ele room-id-wrap">
+            <input id="room-id" type="text" placeholder="Enter lobby ID here">
+            <small>Press Enter</small>
+           </div>
+         </div>         
          <button id="host-game">Host the Game
          <span></span><span></span><span></span><span></span>
          </button>

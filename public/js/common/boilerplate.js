@@ -1,4 +1,6 @@
-
+let headers = new Headers();
+headers.append('Content-Type', 'application/json');
+headers.append('Accept', 'application/json');
 function showFlexElement(ele){
     $(ele).css('display','flex');
 }
@@ -9,7 +11,7 @@ function showBlockElement(ele){
     $(ele).css('display','block');
 }
 function validateUserName(userName){
-    var userNameRegex = /^[a-zA-Z0-9]([._-](?![._-])|[a-zA-Z0-9]){3,18}[a-zA-Z0-9]$/;
+    var userNameRegex = /^[A-Za-z][A-Za-z0-9_]{3,19}$/;
     if(userNameRegex.test(userName)){
         return true;
     }
@@ -24,10 +26,18 @@ function validateLobbyID(lobbyId){
     return false;
 }
 async function setUserNameCookie(userName){
+  try{
     await fetch('/cookie/set', {
-      method: 'post',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({userName})
-    });
+        method: 'post',
+        headers: headers,
+        mode: 'same-origin',
+        redirect: 'follow',
+        credentials: 'include',
+        body: JSON.stringify({userName})
+      });
+  }catch(e){
+      console.log("error while saving cookie");
+      console.log(e);
+  }
 }
 
