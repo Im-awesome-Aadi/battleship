@@ -14,40 +14,39 @@ async function fetchUserName() {
 }
 
 // Submit user Name
-var enteredNameEle = $('#user-name');
+
 $('.submit-name').on('click',async(e)=>{
     e.preventDefault();
-    
-    if(validateUserName(enteredNameEle.val())){
-        userName = enteredNameEle.val();
-        showSecondCard();
-        try {     
-            await setUserNameCookie(userName);
-
-          } catch(err) {
-            console.error(`Error: ${err}`);
-          }
-        
-        
-    }else{
-        alert('Please Enter user name in required format');
-    }
+    submitName();
+});
+$('#user-name').focus(function(){
+  $('.user-name-rules').css('display','block');
+})
+$('#user-name').on('keypress',function(e) {
+  if(e.which == 13) {
+    e.preventDefault();
+    submitName();
+  }
 });
 
-
 // Submit user Name
-var roomIDEle= $('#room-id');
-var roomId = document.getElementById('room-id');
+/*
 $('.join-room').on('click',(e)=>{
     e.preventDefault();
-    const enteredLobbyId = roomIDEle.val().toUpperCase();
-    if(validateLobbyID(enteredLobbyId)){
-      window.location.href= `/lobby/${enteredLobbyId}`;
-    }
-    else{
-      alert('Invalid Lobby Id');
+    enterLobby();
+     
+});*/
+$('#room-id').on('keypress',function(e) {
+  if(e.which == 13) {
+    e.preventDefault();
+    enterLobby();  
   }
-    
+});
+
+$('.have-lobby').on('click',function(e){
+  $(this).addClass('hide-ele');
+  $('.room-id-wrap').removeClass('hide-ele');
+  $('.room-id-wrap').addClass('flex-ele');
 });
 
 $('#host-game').on('click',(e)=>{

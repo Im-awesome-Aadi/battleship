@@ -37,8 +37,13 @@ input,button{
     font-size: 16px;
     border: none;
     box-sizing: border-box;
-    width: 15rem;
+    width: 20rem;
     padding-left: 15px;
+}
+@media only screen and (max-width:520px) {
+    input,button{
+        width: 12rem;
+    }
 }
 button {
     color: var(--lightpurple);
@@ -127,6 +132,12 @@ button span:nth-child(4) {
   }
 .hide-ele{
     display: none;
+}
+.show-ele{
+    display: block;
+}
+.flex-ele{
+    display: flex;
 }
   @media only screen  and (max-width:991px){
       .fancy-heading{
