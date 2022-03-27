@@ -18,7 +18,7 @@ async function submitName(){
 function enterLobby(){
   const enteredLobbyId = $('#room-id').val().toUpperCase();
       if(validateLobbyID(enteredLobbyId)){
-        window.location.href= `/lobby/${enteredLobbyId}`;
+        window.location.href= `play/lobby/${enteredLobbyId}`;
       }
       else{
         alert('Invalid Lobby Id');
