@@ -18,9 +18,9 @@
   
   }
 .lobby-page-header{
-    border-radius: 0;
-    height: fit-content;
-    width: 90%;
+    border-radius: 0 !important;
+    height: fit-content !important;
+    width: 90% !important;
 }
 .lobby-page-header i{
     size: 16px;
@@ -51,6 +51,7 @@
 .joined-member-header small{
     padding-left: 10px;
     color: var(--red);
+    display: none;
 }
 .member-list ul{
     list-style: none;

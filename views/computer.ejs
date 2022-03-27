@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <%- include('./common/meta') %>
+      <title><%= pTitle%></title>
+   </head>
+   <body>
+      <%- include('./common/header') %> 
+      <div class= "hide-ele player-name" ><%= userName%></div>
+      <div class="whose-turn">Let's Play</div>
+      <div class="cmp-game-card">
+         <div class="player-board-container">
+            <div>YOUR ARENA</div>
+            <div class="attack-status">
+               <div class="player-score scorecard">10</div>
+               <div>Last Hit : __</div>
+            </div>
+            <%- include('./common/table')%>
+            <table border="1" class="player-board">
+            </table>
+         </div>
+      </div>
+      <div class="player-status">
+      </div>
+      </div>
+      <div class="opponent-board-container">
+         <div>COMPUTER'S ARENA</div>
+         <div class="attack-status">
+            <div class="opponent-score scorecard">10</div>
+            <div>Last Hit : __</div>
+         </div>
+         <%- include('./common/table')%>
+         <table border="1" class="opponent-board">
+         </table>
+      </div>
+      </div>
+      <div class="opponent-status">
+      </div>
+      </div>
+      </div>
+      <div class="game-button-panel">
+         <button class="refresh-board">Refresh Arena
+         <span></span><span></span><span></span><span></span>
+         </button>
+         <button class="start-game">Start Game
+         <span></span><span></span><span></span><span></span>
+         </button>
+      </div>
+      <div class="next-game-popup">
+         <div class="winner"></div>
+         <div class="final-score"></div>
+         <div class="game-button-panel">
+            <button >PLAY AGAIN
+            <span></span><span></span><span></span><span></span>
+            </button>
+            <button >HOME
+            <span></span><span></span><span></span><span></span>
+            </button>
+         </div>
+      </div>
+      </div><%- include('./common/footer') %> 
+      <link rel="stylesheet" href="/css/common/table.css" type="text/css">
+      <%- include('./common/scripts') %>
+      <script src="/js/computer/board.js"></script>
+      <script src="/js/computer/dom.js"></script>
+      <script src="/js/computer/helper.js"></script>
+   </body>
+</html>

@@ -11,7 +11,7 @@ exports.getHostPage= async(req,res)=>{
     let lobbyId = Utils.createLobbyId();
     let createdLobby = await lobbyDao.createLobby(lobbyId,'');
     if(createdLobby){
-        res.redirect(`/lobby/${lobbyId}`);
+        res.redirect(`play/lobby/${lobbyId}`);
     }else{
         res.redirect('/error/404');
     }
