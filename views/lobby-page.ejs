@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
    <head>
-      <%- include('./common/meta') %>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
       <link rel="stylesheet" href="/css/home-page.css" type="text/css">
       <link rel="stylesheet" href="/css/lobby-page.css" type="text/css">
+      <%- include('./common/meta') %>
+
       <title><%= pTitle%></title>
       <style>
       </style>
@@ -61,6 +61,7 @@
       </div>
       <%- include('./common/footer') %> 
       <%- include('./common/scripts') %>
+      <script src="/socket.io/socket.io.js"></script>
       <script src="/js/lobby/dom.js"></script>
       <script src="/js/lobby/socket.js"></script>
       <script src="/js/lobby/helper.js"></script>
