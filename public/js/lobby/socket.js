@@ -14,23 +14,21 @@ socket.on('welcome',()=>{
 
 socket.on('joined',(currentLobby)=>{
 
-    updateJoinedList(currentLobby.players);
-    hostSetting(socket.id,currentLobby.hostId);
+    
+    updateLobbyUI(socket.id, currentLobby);
     setLobbyAlerts(0,null);
     
 })
 socket.on('user-added',(currentLobby,newPlayer)=>{
 
-    updateJoinedList(currentLobby.players);
-    hostSetting(socket.id,currentLobby.hostId);
+    updateLobbyUI(socket.id, currentLobby);
     setLobbyAlerts(1,newPlayer);
     
 });
 
 socket.on('player-left',(currentLobby,leftPlayer)=>{
     
-    updateJoinedList(currentLobby.players);
-    hostSetting(socket.id,currentLobby.hostId);
+    updateLobbyUI(socket.id, currentLobby);
     setLobbyAlerts(2,leftPlayer);
 
 });

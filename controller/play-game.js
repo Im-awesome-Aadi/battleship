@@ -13,11 +13,16 @@
      let userName = req.cookies.userName;
      let returnedLobby = await lobbyDao.getCurrentLobby(req.params.lobbyId);
      if(returnedLobby){
-         lobbyId = req.params.lobbyId;
-         return res.render('lobby-page',{
-             pTitle: pName.LOBBY,
-             lobbyId,userName
-         });
+        if(returnedLobby.players.length<2){
+            lobbyId = req.params.lobbyId;
+            return res.render('lobby-page',{
+                pTitle: pName.LOBBY,
+                lobbyId,userName
+            });
+        }
+        else{
+            res.send('Lobby Full');
+        }
      }else{
          return res.redirect('/error/404');
      }
