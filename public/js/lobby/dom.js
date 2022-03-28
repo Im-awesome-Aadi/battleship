@@ -100,6 +100,9 @@ $(document).ready(()=>{
 
     });
 });
+$('.lobby-id-wrap').on('click',function(){
+    showGameScreen();
+});
 $('.start-game').on('click',function(){
     if( $('.cmp-ships-count').val()==null && $('.cmp-board-size').val()==null ){
         alert('Select game details');
@@ -117,3 +120,18 @@ $('.start-game').on('click',function(){
 });
 
 
+$(document.body).on('click','.opponent-board td', function(){
+    let row_index = $(this).parent().index();
+    let col_index = $(this).index();
+    attackOpponent('opponent-board',row_index,col_index);
+    /*
+    if(attackOpponentBoardUI(result,row_index,col_index)){
+       // showPlayerStatus(player.getBoardStatus());
+    }
+    giveTurnToComputer(true);
+    setTimeout(function(){
+        computerTurn(player)
+    },1000);
+    */
+
+ });

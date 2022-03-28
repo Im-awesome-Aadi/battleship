@@ -1,3 +1,13 @@
+let shipData=[
+    {type:'Destroyer',size:2,color:'rgba(236, 77, 77, 0.81)'},
+    {type:'Submarine',size:3,color:'rgba(36, 241, 6, 0.46)'},
+    {type:'Cruiser',size:3,color:'rgba(6, 241, 226, 0.81)'},
+    {type:'Battleship',size:4,color:'rgba(241, 142, 6, 0.81)'},
+    {type:'Carrier',size:5,color:'rgba(238, 26, 238, 0.81)'}
+];
+
+let myBoard="";
+let opponentName="";
 // HELPER FUNCTIONS
 function updateLobbyUI(pId,currentLobby){
     let playersList = currentLobby.players;
@@ -82,7 +92,18 @@ function startTimer(duration, display) {
         timer--;
         if(timer<0){
           clearInterval(id);
+          showGameScreen();
           return;
         }
     }, 1000);
 }
+
+function showGameScreen(){
+    $('.lobby-page-card').addClass('hide-ele');
+    $('.cmp-game-screen').addClass('show-ele');
+    createEmptyBoard('player-board',10);
+    createEmptyBoard('opponent-board',10);
+    getBoardSocket(10,shipData);
+    doHandshake();
+}
+

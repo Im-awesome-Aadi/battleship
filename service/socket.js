@@ -5,6 +5,7 @@
 const lobbyDao = require('./lobby-dao');
 const server = require('./server');
 const event = require('../utils/socket-strings');
+const Board = require('../model/Board');
 server.io.on(event.CONNECTION, function(socket){
     let userName = '';
     let lobbyId = '';    
@@ -37,4 +38,24 @@ server.io.on(event.CONNECTION, function(socket){
         }
     });
 
+    // Clients requests for board
+    socket.on('get-board',(data)=>{
+        let board = new Board(data.boardSize,userName);
+        board.getShipsPosition(data.shipData);
+        socket.emit('return-ship',board);
+    });
+    
+    socket.on('attack',(location)=>{
+        socket.broadcast.to(lobbyId).emit('defend',location);
+    })
+    socket.on('retreat',(data)=>{
+        socket.broadcast.to(lobbyId).emit('attack-response',{
+            response: data.response,
+            row_index : data.row_index,
+            col_index:data.col_index
+        });
+    })
+    socket.on('player-handshake',()=>{
+        socket.broadcast.to(lobbyId).emit('handshake-data',userName);
+    });
 });

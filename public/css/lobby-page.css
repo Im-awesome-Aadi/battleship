@@ -84,7 +84,7 @@ li:before {
 .cmp-joined-member{
     display: flex;
     flex-direction: row;
-    height: 50vh;
+    height: 45vh;
     overflow: auto;
 }
 .lobby-left-container{
@@ -265,4 +265,12 @@ li:before {
 }
 .start-game{
     margin-top: 10px;
+}
+
+.game-countdown{
+    text-align: center;
+}
+
+.cmp-game-screen{
+    display: none;
 }
