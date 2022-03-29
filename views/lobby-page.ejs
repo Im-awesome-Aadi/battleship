@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
    <head>
+      <%- include('./common/meta') %>
+      <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+      <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
       <link rel="stylesheet" href="/css/home-page.css" type="text/css">
       <link rel="stylesheet" href="/css/lobby-page.css" type="text/css">
-      <%- include('./common/meta') %>
-
+      <script src="/socket.io/socket.io.js"></script>
       <title><%= pTitle%></title>
       <style>
       </style>
@@ -15,7 +17,7 @@
       <div class= "hidden-username" ><%= userName%></div>
       <div class="lobby-page-card">
          <div class="header lobby-page-header fancy-heading">
-            <div class="">LOBBY</div>
+            <div class="lobby-id-wrap">LOBBY</div>
             <div class="header-right">
                <div>
                   <i class='fa fa-user' ></i>
@@ -31,13 +33,26 @@
          </div>
          <div class="joined-member-container">
             <div class="joined-member-header">
-               <div class="normal-text">Joined Members : 10</div>
-               <small>Select 2 players (as captain) to continue</small>
+               <div class="normal-text">Joined Members : <span class="total-players">10<span></div>
             </div>
             <div class="cmp-joined-member">
-               <div class="member-list-div">
-                  <ul class="member-list">
-                  </ul>
+               <div class="lobby-left-container">
+                  <div class="member-list-div">
+                     <ul class="member-list">
+                     </ul>
+                  </div>
+                  <div class="game-setting">
+                  <div>
+                     <p>Board Size : </p>
+                     <select class="cmp-board-size" name="cmp-board-size" id="">
+                     </select>
+                  </div>
+                     <div>
+                        <p>Number of Ships : </p>
+                        <select class="cmp-ships-count" name="cmp-ships-count" id="">
+                        </select>
+                     </div>
+                  </div>
                </div>
                <div class="lobby-chat-container">
                   <div class="cmp-lobby-chat">
@@ -54,16 +69,32 @@
             </ul>
          </div>
          <div>
-            <button class="start-game inactive-button">Start Game
+            <button class="start-game">Start Game
+            <span></span><span></span><span></span><span></span>
+            </button>
+         </div>
+         <div class="game-countdown">
+         </div>
+      </div>
+
+      <%- include('./common/game')%>
+      <div class="next-game-popup">
+         <div class="winner"></div>
+         <div class="final-score"></div>
+         <div class="game-button-panel">
+            <button >HOME
             <span></span><span></span><span></span><span></span>
             </button>
          </div>
       </div>
+      </div>
       <%- include('./common/footer') %> 
       <%- include('./common/scripts') %>
-      <script src="/socket.io/socket.io.js"></script>
+      <link rel="stylesheet" href="/css/common/table.css" type="text/css">
+      <link rel="stylesheet" href="/css/computer.css" type="text/css">
       <script src="/js/lobby/dom.js"></script>
       <script src="/js/lobby/socket.js"></script>
       <script src="/js/lobby/helper.js"></script>
+      <script src="/js/lobby/game.js"></script>
    </body>
 </html>

@@ -27,7 +27,7 @@ td:hover{
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    flex-wrap: wrap;
+    flex-wrap: wrap-reverse;
 }
 .game-button-panel{
     text-align: center;

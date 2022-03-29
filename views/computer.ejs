@@ -8,36 +8,8 @@
       <%- include('./common/header') %> 
       <div class= "hide-ele player-name" ><%= userName%></div>
       <div class="whose-turn">Let's Play</div>
-      <div class="cmp-game-card">
-         <div class="player-board-container">
-            <div>YOUR ARENA</div>
-            <div class="attack-status">
-               <div class="player-score scorecard">10</div>
-               <div>Last Hit : __</div>
-            </div>
-            <%- include('./common/table')%>
-            <table border="1" class="player-board">
-            </table>
-         </div>
-      </div>
-      <div class="player-status">
-      </div>
-      </div>
-      <div class="opponent-board-container">
-         <div>COMPUTER'S ARENA</div>
-         <div class="attack-status">
-            <div class="opponent-score scorecard">10</div>
-            <div>Last Hit : __</div>
-         </div>
-         <%- include('./common/table')%>
-         <table border="1" class="opponent-board">
-         </table>
-      </div>
-      </div>
-      <div class="opponent-status">
-      </div>
-      </div>
-      </div>
+
+      <%- include('./common/game') %> 
       <div class="game-button-panel">
          <button class="refresh-board">Refresh Arena
          <span></span><span></span><span></span><span></span>
@@ -58,8 +30,10 @@
             </button>
          </div>
       </div>
-      </div><%- include('./common/footer') %> 
+      </div>
+      <%- include('./common/footer') %> 
       <link rel="stylesheet" href="/css/common/table.css" type="text/css">
+      <link rel="stylesheet" href="/css/computer.css" type="text/css">
       <%- include('./common/scripts') %>
       <script src="/js/computer/board.js"></script>
       <script src="/js/computer/dom.js"></script>
