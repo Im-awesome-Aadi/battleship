@@ -6,6 +6,7 @@
       <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
       <link rel="stylesheet" href="/css/home-page.css" type="text/css">
       <link rel="stylesheet" href="/css/lobby-page.css" type="text/css">
+      <script src="/socket.io/socket.io.js"></script>
       <title><%= pTitle%></title>
       <style>
       </style>
@@ -77,12 +78,20 @@
       </div>
 
       <%- include('./common/game')%>
+      <div class="next-game-popup">
+         <div class="winner"></div>
+         <div class="final-score"></div>
+         <div class="game-button-panel">
+            <button >HOME
+            <span></span><span></span><span></span><span></span>
+            </button>
+         </div>
+      </div>
       </div>
       <%- include('./common/footer') %> 
       <%- include('./common/scripts') %>
       <link rel="stylesheet" href="/css/common/table.css" type="text/css">
       <link rel="stylesheet" href="/css/computer.css" type="text/css">
-      <script src="/socket.io/socket.io.js"></script>
       <script src="/js/lobby/dom.js"></script>
       <script src="/js/lobby/socket.js"></script>
       <script src="/js/lobby/helper.js"></script>

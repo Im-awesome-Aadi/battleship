@@ -16,13 +16,11 @@ class Ship{
         
         if(this.vertical){
             if(this.validatePoints(r,c,this.vertical)){
-                console.log("keeping vertical failed" + this.size)
                 return this.getStartingPoint(size,blen);
             }
             return [r,c];
         }else{
             if(this.validatePoints(c,r,this.vertical)){
-                console.log("keeping horizontal failed" + this.size)
 
                 return this.getStartingPoint(size,blen);
             }

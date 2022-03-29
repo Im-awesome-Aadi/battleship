@@ -274,3 +274,6 @@ li:before {
 .cmp-game-screen{
     display: none;
 }
+.game-countdown{
+    margin-top: 16px;
+}

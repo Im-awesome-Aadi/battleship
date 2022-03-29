@@ -2,7 +2,7 @@
 var lobbyId = $('.hidden-lobby-id').text();
 var userName = $('.hidden-username').text();
 let totalTeams = 2;
-
+var myTurn = false;
 
 $('.send-chat').on('click',()=>{
     const msg = $('.cmp-input-message').val();
@@ -104,18 +104,16 @@ $('.lobby-id-wrap').on('click',function(){
     showGameScreen();
 });
 $('.start-game').on('click',function(){
-    if( $('.cmp-ships-count').val()==null && $('.cmp-board-size').val()==null ){
+    let shipsCount = $('.cmp-ships-count').val();
+    let boardSize = $('.cmp-board-size').val();
+    if( shipsCount ==null || boardSize ==null ){
         alert('Select game details');
     }else{
         $('.start-game').css('display','none');
-        startTimer(5,'.game-countdown');
-        const selectedPlayers = $('.cmp-joined-member input[type="checkbox"]:checked');
-        if(selectedPlayers.length<totalTeams){
-            
-        }
-        selectedPlayers.each(function(index,ele){
-     
-        })
+        //Notify to all that game started
+        gameStartedNotif(boardSize,shipsCount);
+        startTimer(5,boardSize,shipsCount);
+
     }
 });
 
@@ -123,15 +121,13 @@ $('.start-game').on('click',function(){
 $(document.body).on('click','.opponent-board td', function(){
     let row_index = $(this).parent().index();
     let col_index = $(this).index();
-    attackOpponent('opponent-board',row_index,col_index);
-    /*
-    if(attackOpponentBoardUI(result,row_index,col_index)){
-       // showPlayerStatus(player.getBoardStatus());
+    if(myTurn){
+        attackOpponent('opponent-board',row_index,col_index);
+        myTurn=false;
     }
-    giveTurnToComputer(true);
-    setTimeout(function(){
-        computerTurn(player)
-    },1000);
-    */
-
  });
+
+
+ $(document.body).on('click','.next-game-popup button',()=>{
+    window.location.href='/';
+});

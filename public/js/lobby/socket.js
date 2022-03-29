@@ -1,7 +1,7 @@
 // CLIENT - SOCKETS
 const socket = io();
+//const socket = io.connect('localhost:80', {reconnect: true});
 socket.on('connect',()=>{
-    console.log('conneected to server with id : ' + socket.id);
 });
 socket.on('welcome',()=>{
     
@@ -38,19 +38,29 @@ socket.on('recd-msg',(chat)=>{
 });
 
 socket.on('return-ship',(data)=>{
-    arrangeShipsOnBoard('player-board',data);
+    arrangeShipsOnBoard(data);
+    updateOpponentScoreCard(calculateStrength(data.ships));
+    updateMyScoreCard(calculateStrength(data.ships));
 });
 
 socket.on('handshake-data',(opponentName)=>{
     setOpponentName(opponentName);
 })
-
-function doHandshake(myName){
-    socket.emit('player-handshake',myName);
+socket.on('game-started',(gameSettings)=>{
+    startTimer(5,gameSettings.boardSize,gameSettings.shipsCount);
+});
+function doHandshake(){
+    socket.emit('player-handshake');
 }
-function getBoardSocket(boardSize){
+
+function gameStartedNotif(boardSize,shipsCount){
+    socket.emit('game-start',{
+        boardSize,shipsCount
+    })
+}
+function getBoardSocket(boardSize,shipsCount){
     socket.emit('get-board',{
-        boardSize,shipData
+        boardSize,shipsCount
     });
 }
 function sendToServer(userName,msg){
@@ -68,7 +78,7 @@ function attackOpponentSocket(row_index,col_index){
 
 // Received attack response and attacked location (data.response, data.row_index,data.col_index)
 socket.on('attack-response',(data)=>{
-    console.log(data);
+    updateOpponentHitPanel(data.row_index,data.col_index)
     attackOpponentBoardUI(data.response,data.row_index,data.col_index)
 })
 
@@ -76,7 +86,7 @@ socket.on('attack-response',(data)=>{
 // Defenser
 // Received attacked location (data.row_index,data.col_index)
 socket.on('defend',(data)=>{
-    console.log(data);
+    myTurn=true;
     const response = attackBoard(data.row_index,data.col_index);
     socket.emit('retreat',{
         response,

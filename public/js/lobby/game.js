@@ -1,3 +1,5 @@
+
+let opponentName ="";
 function createEmptyBoard(className, size){
     let table_body='';
     $(`.${className}`).html('');
@@ -14,7 +16,7 @@ function createEmptyBoard(className, size){
     $(`.${className}`).html(table_body);
 }
 
-function arrangeShipsOnBoard(className, data){
+function arrangeShipsOnBoard(data){
     myBoard=data;
     let allShips = data.ships;
     let color=['red','green','blue','yellow','purple'];
@@ -25,21 +27,23 @@ function arrangeShipsOnBoard(className, data){
         let currCol = currShip.start[1];
         if(currShip.vertical){
             for(let j=0;j<currSize;j++){
-                $(`.${className} tr:nth-child(${currRow+j+1}) td:nth-child(${currCol+1})`).addClass(`${color[i]}-ship-box`)
+                $(`.player-board tr:nth-child(${currRow+j+1}) td:nth-child(${currCol+1})`).addClass(`${color[i]}-ship-box`)
             }
         }else{
             for(let j=0;j<currSize;j++){
-                $(`.${className} tr:nth-child(${currRow+1}) td:nth-child(${currCol+j+1})`).addClass(`${color[i]}-ship-box`)
+                $(`.player-board tr:nth-child(${currRow+1}) td:nth-child(${currCol+j+1})`).addClass(`${color[i]}-ship-box`)
             } 
         }
     }
 }
-function setOpponentName(opponentName){
+function setOpponentName(name){
+    opponentName = name;
     $('.cmp-opponent-name').text(`${opponentName} Arena`)
 }
 function attackOpponent(className,row_index,col_index){
-    updateOpponentHitPanel(row_index,col_index);
+    //updateOpponentHitPanel(row_index,col_index);
     attackOpponentSocket(row_index,col_index);
+    setTurnPanel(opponentName);
     disableCell(className,row_index,col_index);
 }
 
@@ -93,15 +97,15 @@ function disableCell(className,r,c){
 }
 function attackBoard(r,c){
     updateMyHitPanel(r,c);
+    setTurnPanel('Your');
     let attackStatus = hitCell(r,c);
     if(attackStatus.status){
-        console.log("its a at  "+r+c+ "hit by ");
-        console.log(attackStatus)
         receivedHitSuccess(attackStatus.ship.color,r,c);
         myBoard.strength--;
         updateMyScoreCard(myBoard.strength);
         if(!myBoard.strength){
-
+            // Opponent won
+            showWinner(opponentName,myBoard.strength,)
             return{
                 status:'won',
                 damage:attackStatus.ship,
@@ -144,7 +148,7 @@ function attackOpponentBoardUI(result,r ,c){
         $('.opponent-board-container .attack-status div:nth-child(2)').append(' HIT');
         if(result.status =='won'){
             //updateOpponentScoreCard(result.strength)
-            //showWinner(player.owner,player.strength,opponent.strength);
+            showWinner('You');
             //updateOpponentStatus(result.damage);
         }else if(result.damage.type !==undefined){
             //updateOpponentStatus(result.damage);
@@ -159,14 +163,14 @@ function attackOpponentBoardUI(result,r ,c){
 }
 function updateMyHitPanel(r,c){
     ri= r+1;
-    ci=String.fromCharCode(65+c);
+    ci=getChar(c);
     let tempC = $('.player-board-container .attack-status div:nth-child(2)');
     $(tempC).html(`Last Hit : ${ri}${ci}`);      
 }
 
 function updateOpponentHitPanel(r,c){
     ri= r+1;
-    ci=String.fromCharCode(65+c);
+    ci=getChar(c);
     let tempC = $('.opponent-board-container .attack-status div:nth-child(2)');
     $(tempC).html(`Last Hit : ${ri}${ci}`);      
 }
@@ -176,4 +180,25 @@ function updateMyScoreCard(strength){
  }
  function updateOpponentScoreCard(strenth){
     $('.opponent-score').html(`Strength : ${strenth}`);
+ }
+
+ function setTurnPanel(turn){
+    $('.whose-turn').html(`${turn}'s Turn `);
+ }
+
+ function calculateStrength(allShips){
+    let strength=0;
+    allShips.forEach((e)=>{
+        strength+=e.size;
+    });
+    return strength;
+ }
+
+ 
+ function showWinner(winner){
+    $('.next-game-popup').css('display','flex');
+    $('.winner').html(`${winner} Won`);
+     //$('.final-score').html(`${pStrength} - ${oStrength}`)
+    $('.cmp-game-card').css('opacity',0.3)    
+
  }

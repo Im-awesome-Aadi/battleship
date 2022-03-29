@@ -7,7 +7,6 @@ let shipData=[
 ];
 
 let myBoard="";
-let opponentName="";
 // HELPER FUNCTIONS
 function updateLobbyUI(pId,currentLobby){
     let playersList = currentLobby.players;
@@ -34,10 +33,13 @@ function hostSetting(userId,hostId){
         $('.start-game').addClass('hide-ele');
         $('.joined-member-header small').addClass('hide-ele');
         $('.game-setting').addClass('hide-ele')
+        setTurnPanel('Opponent')
     }else{
         $('.member-list input').removeClass('hide-ele');   
         $('.start-game').removeClass('hide-ele');
         $('.game-setting').removeClass('hide-ele');
+        setTurnPanel('Your')
+        myTurn=true;
     }
 }
 
@@ -85,25 +87,51 @@ function setLobbyAlerts(index,playerName){
      }, 10000);
 }
 
-function startTimer(duration, display) {
+function startTimer(duration, boardSize,shipsCount) {
     let timer = duration;
     let id = setInterval(function () {
-        $(display).text( `Game will ${timer} seconds`);
+        $('.game-countdown').text( `Game will start ${timer} seconds`);
         timer--;
         if(timer<0){
           clearInterval(id);
-          showGameScreen();
+          showGameScreen(boardSize,shipsCount);
           return;
         }
     }, 1000);
 }
 
-function showGameScreen(){
+function showGameScreen(boardSize,shipsCount){
     $('.lobby-page-card').addClass('hide-ele');
     $('.cmp-game-screen').addClass('show-ele');
-    createEmptyBoard('player-board',10);
-    createEmptyBoard('opponent-board',10);
-    getBoardSocket(10,shipData);
+    createEmptyBoard('player-board',boardSize);
+    createEmptyBoard('opponent-board',boardSize);
+    showColumnLabel(boardSize)
+    showRowLabel(boardSize)
+    getBoardSocket(boardSize,shipsCount);
     doHandshake();
 }
 
+function showColumnLabel(size){
+    $('.column-label').html('')
+    let table_body='';
+    table_body += '<th>&nbsp;</th>';
+    for(let j=0;j<size;j++){
+        table_body +='<th>';
+        table_body +=getChar(j);
+        table_body +='</th>';
+    }
+    $('.column-label').html(table_body);
+}
+function showRowLabel(size){
+    $('.row-label').html('')
+    let table_body='';
+    for(let j=0;j<size;j++){
+        table_body +='<tr><td>';
+        table_body += (j+1);
+        table_body +='</td></tr>';
+    }
+    $('.row-label').html(table_body);
+}
+function getChar(c){
+    return String.fromCharCode(65+c)
+}
