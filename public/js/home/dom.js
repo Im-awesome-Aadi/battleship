@@ -28,7 +28,9 @@ $('#user-name').on('keypress',function(e) {
     submitName();
   }
 });
-
+$('.play-computer').on('click',function(){
+  window.location.href='/play/computer';
+})
 // Submit user Name
 /*
 $('.join-room').on('click',(e)=>{

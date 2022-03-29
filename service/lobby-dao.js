@@ -76,4 +76,17 @@ async function deleteLobby(cmpLobbyId){
     const currentLobby = await getCurrentLobby(cmpLobbyId);
     currentLobby.remove();
 }
-module.exports = {createLobby, getCurrentLobby,addPlayer,removePlayer,deleteLobby};
+
+async function getPlayers(cmpLobbyId){
+    try{
+        const currentLobby = await getCurrentLobby(cmpLobbyId);
+        if(currentLobby){
+            return currentLobby.players;
+        }
+        return null;
+    }catch(e){
+        console.log('Db error while loading lobby\'s player');
+    }
+
+}
+module.exports = {createLobby, getCurrentLobby,addPlayer,removePlayer,deleteLobby,getPlayers};

@@ -1,0 +1,32 @@
+<div class="cmp-game-screen">
+    <div class="whose-turn">Let's Play</div>
+    <div class="cmp-game-card">
+       <div class="player-board-container">
+          <div>YOUR ARENA</div>
+          <div class="attack-status">
+             <div class="player-score scorecard">10</div>
+             <div>Last Hit : __</div>
+          </div>
+          <%- include('./table')%>
+          <table border="1" class="player-board">
+          </table>
+       </div>
+    </div>
+    <div class="player-status">
+    </div>
+    </div>
+    <div class="opponent-board-container">
+       <div class="cmp-opponent-name">COMPUTER'S ARENA</div>
+       <div class="attack-status">
+          <div class="opponent-score scorecard">10</div>
+          <div>Last Hit : __</div>
+       </div>
+       <%- include('./table')%>
+       <table border="1" class="opponent-board">
+       </table>
+    </div>
+    </div>
+    <div class="opponent-status">
+    </div>
+    </div>
+    </div>

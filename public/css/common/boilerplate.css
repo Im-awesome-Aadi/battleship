@@ -86,10 +86,6 @@ button:hover {
     
     
 }
-.inactive-button{
-    pointer-events: none;
-    display: none;
-}
 button:hover span {
     transform: translateY(0) scale(2);
 }
@@ -131,10 +127,11 @@ button span:nth-child(4) {
       
   }
 .hide-ele{
-    display: none;
+    display: none !important;
+    pointer-events: none !important;
 }
 .show-ele{
-    display: block;
+    display: block !important;
 }
 .flex-ele{
     display: flex;
