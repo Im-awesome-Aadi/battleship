@@ -7,7 +7,7 @@
 const lobbyDao = require('./lobby-dao');
 const server = require('./server');
 const event = require('../utils/socket-strings');
-const Board = require('../model/Board');
+const Board = require('../model/board');
 const shipData = require('../utils/ship-data');
 
 server.io.on(event.CONNECTION, function(socket){
