@@ -1,4 +1,5 @@
 const Ship = require('./ship')
+
 class Board{
     constructor(size,owner){
         this.size=size;

@@ -1,4 +1,5 @@
 class Ship{
+    
     static flock=[];
     constructor(type,size,blen,color){
         this.type=type;
