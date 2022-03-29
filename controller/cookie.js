@@ -4,11 +4,7 @@
 */
 exports.setCookie=(req,res)=>{
     
-    res.cookie('userName',req.body.userName,{
-        secure: true,
-        httpOnly: true,
-        sameSite: 'lax'
-    });
+    res.cookie('userName',req.body.userName);
     res.send('username cookie saved');
 }
 
