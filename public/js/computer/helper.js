@@ -21,15 +21,13 @@ function updateOpponentStatus(ships){
     $('.opponent-status').append(`<p style="color:${ships.color}">${ships.type} has been destroyed</p>`);
 }
 function attackPlayerBoardUI(player,r,c){
-    console.log(player)
     let result = player.attackBoard(r,c);
     if(result.status === ''){
         return false;
     }else{
         if(result.status){
             updatePlayerScoreCard(result.strength)
-            console.log("c hit")
-            console.log(result)
+
             $(`.player-board tr:nth-child(${r+1}) td:nth-child(${c+1})`).html(`<i style="color:${result.damage.color}" class="fa-solid fa-skull"></i>`)
             if(result.status =='won'){
 
@@ -50,7 +48,6 @@ function attackPlayerBoardUI(player,r,c){
     }
 }
  function attackOpponentBoardUI(result,r ,c){
-    console.log(result)
     if(result.status === ''){
         alert("Already attacked");
         return false;
@@ -86,7 +83,6 @@ function attackPlayerBoardUI(player,r,c){
         $('.opponent-board').css({'pointer-events':'none'})
         $('.whose-turn').html('Computer turn');
     }else{
-     console.log("not")
      $('.whose-turn').html(`${player.owner}'s Turn `);
      $('.opponent-board').css({'pointer-events':'auto'})
 
@@ -111,7 +107,6 @@ function attackPlayerBoardUI(player,r,c){
             $(tempC).append(' MISS');
 
     }
-    console.log(ri,ci);
  }
 
  function showWinner(winner,pStrength,oStrength){

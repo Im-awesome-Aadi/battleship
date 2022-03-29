@@ -63,6 +63,8 @@
 }
 .member-list li>div{
     width: 80%;
+    padding-left: 16px;
+    padding-top: 8px;
 }
 .not-allowed{
     cursor: not-allowed;
@@ -82,8 +84,53 @@ li:before {
 .cmp-joined-member{
     display: flex;
     flex-direction: row;
-    height: 50vh;
+    height: 45vh;
     overflow: auto;
+}
+.lobby-left-container{
+    width: 50%;
+    padding-left: 10px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    margin-right: 20px;
+
+}
+.game-setting {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 50%;
+    margin-top: 10px;
+    background-color: var(--lightgrey);
+    border-radius: 10px;
+    padding: 0 12px;
+}
+.game-setting div{
+    width: 100% ;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.game-setting select{
+    width: 112px;
+    border-radius: 5px;
+    height: 20px;
+    margin-left: 8px;
+    padding-left: 0px;
+}
+.select2-selection__rendered{
+    text-align: center;
+}
+.game-setting input{
+    
+    width: 112px;
+    border-radius: 5px;
+    height: 20px;
+    margin-left: 8px;
+    padding-left: 0px;
+
 }
 .member-list-div, .lobby-chat-container{
     height: 100%;
@@ -92,20 +139,19 @@ li:before {
     font-size: 20px;
 
 }
+.member-list-div{
+    height: 50%;
+}
 .cmp-host-name{
     color: var(--yellow);
     font-size: 16px;
 }
 .member-list-div{
-    width: 40%;
-    
-    
-    padding-left: 10px;
+    width: 100%;
     overflow-y: auto;
-    margin-right: 20px;
 }
 .lobby-chat-container{
-    width: 60%;
+    width: 50%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -219,4 +265,15 @@ li:before {
 }
 .start-game{
     margin-top: 10px;
+}
+
+.game-countdown{
+    text-align: center;
+}
+
+.cmp-game-screen{
+    display: none;
+}
+.game-countdown{
+    margin-top: 16px;
 }
