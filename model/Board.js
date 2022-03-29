@@ -16,7 +16,6 @@ class Board{
         this.ships=[];
         this.remaining=[];
         this.strength=0;
-        console.log(this.size);
         shipData.forEach(element => {
             const addedShip = new Ship(element.type,element.size,parseInt(this.size),element.color);
             this.ships.push(addedShip);
