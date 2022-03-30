@@ -7,15 +7,22 @@ var myTurn = false;
 $('.send-chat').on('click',()=>{
     const msg = $('.cmp-input-message').val();
     if(msg){
-        addChat(userName,msg);
+        addChat(true,userName,msg);
         sendToServer(userName,msg);
     }
+});
+$('.fa-copy').on('click',()=>{
+    navigator.clipboard.writeText(lobbyId);
+    $('.lobby-id-wrap').append('<span class="copy-tooltip">copied</span>')
+    setTimeout(function(){
+        $('.copy-tooltip').remove();
+    },2000);
 });
 $('.cmp-input-message').on('keypress',function(e) {
     if(e.which == 13) {
         const msg = $('.cmp-input-message').val();
         if(msg){
-            addChat(userName,msg);
+            addChat(true,userName,msg);
             sendToServer(userName,msg);
         }
     }
@@ -99,9 +106,6 @@ $(document).ready(()=>{
         }
 
     });
-});
-$('.lobby-id-wrap').on('click',function(){
-    showGameScreen();
 });
 $('.start-game').on('click',function(){
     let shipsCount = $('.cmp-ships-count').val();

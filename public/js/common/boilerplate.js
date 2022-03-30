@@ -41,3 +41,22 @@ async function setUserNameCookie(userName){
   }
 }
 
+$('.game-name').on('click',()=>{
+    playAudio();
+    
+})
+function playAudio(){
+    const audio = new Audio('/assets/notif.mp3');
+    audio.play();
+}
+let isHidden=true;
+$('.chat-button').on('click',()=>{
+    if(isHidden){
+        $('.chat-popup').css('display','flex')
+        isHidden=false;
+    }else{
+        $('.chat-popup').css('display','none');
+        isHidden=true;
+
+    }
+})

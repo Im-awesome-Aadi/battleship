@@ -34,7 +34,7 @@ socket.on('player-left',(currentLobby,leftPlayer)=>{
 });
 
 socket.on('recd-msg',(chat)=>{
-    addChat(chat.userName, chat.msg);
+    addChat(false,chat.userName, chat.msg);
 });
 
 socket.on('return-ship',(data)=>{
@@ -87,10 +87,12 @@ socket.on('attack-response',(data)=>{
 // Received attacked location (data.row_index,data.col_index)
 socket.on('defend',(data)=>{
     myTurn=true;
+    playAudio();
     const response = attackBoard(data.row_index,data.col_index);
     socket.emit('retreat',{
         response,
         row_index: data.row_index,
         col_index: data.col_index
     });
+    
 })

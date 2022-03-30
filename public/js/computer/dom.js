@@ -31,6 +31,7 @@ $('.start-game').on('click',function(){
     updateOpponentScoreCard(opponent.strength);
     updatePlayerScoreCard(player.strength);
     giveTurnToComputer(false);
+    $('.game-button-panel').css('display','none');
     //showPlayerStatus(player.getBoardStatus());
     
 });

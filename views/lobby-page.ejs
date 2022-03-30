@@ -17,7 +17,7 @@
       <div class= "hidden-username" ><%= userName%></div>
       <div class="lobby-page-card">
          <div class="header lobby-page-header fancy-heading">
-            <div class="lobby-id-wrap">LOBBY</div>
+            <div class="lobby-id-wrap"><%= lobbyId%> <span><i class="fa-solid fa-copy"></i></span></div>
             <div class="header-right">
                <div>
                   <i class='fa fa-user' ></i>
@@ -86,12 +86,12 @@
             <span></span><span></span><span></span><span></span>
             </button>
          </div>
+      </div>  
       </div>
-      </div>
+      <link rel="stylesheet" href="/css/computer.css" type="text/css">
       <%- include('./common/footer') %> 
       <%- include('./common/scripts') %>
       <link rel="stylesheet" href="/css/common/table.css" type="text/css">
-      <link rel="stylesheet" href="/css/computer.css" type="text/css">
       <script src="/js/lobby/dom.js"></script>
       <script src="/js/lobby/socket.js"></script>
       <script src="/js/lobby/helper.js"></script>

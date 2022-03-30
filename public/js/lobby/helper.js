@@ -61,11 +61,13 @@ function getRandomColorBox(){
     return colorBox[randomIndex];
 }
 
-function addChat(sender,chat){
+function addChat(isSender,sender,chat){
     let randomColorBox = getRandomColorBox();
     
     $('.cmp-lobby-chat').append(`<fieldset><legend><i class='fa fa-user' ></i>${sender}</legend><div class=${randomColorBox}>${chat}</div></fieldset>`);
-    $('.cmp-input-message').val('');
+    if(isSender){
+        $('.cmp-input-message').val('');
+    }
     $('.cmp-lobby-chat').scrollTop($('.cmp-lobby-chat').prop('scrollHeight'));
 }
 

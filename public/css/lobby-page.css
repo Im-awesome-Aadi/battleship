@@ -14,7 +14,7 @@
     animation: 10s waving forwards infinite;
     animation: 0.5s fade ease-in;
     white-space: nowrap;
-    height: fit-content;
+    height: 60vh;
   
   }
 .lobby-page-header{
@@ -276,4 +276,8 @@ li:before {
 }
 .game-countdown{
     margin-top: 16px;
+}
+.fa-copy{
+    font-size: 14px;
+    cursor: pointer;
 }
