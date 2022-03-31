@@ -13,7 +13,6 @@ exports.setCookie=(req,res)=>{
     /cookie/get
 */
 exports.getCookie=(req,res)=>{
-    console.log("fetching  the cokie")
     if(req.cookies.userName === undefined){
         return res.json('');
     }

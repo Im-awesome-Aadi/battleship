@@ -3,9 +3,10 @@
     left: 0;
   bottom: 0;
   width: 100%;
+  z-index: 9999;
 }
 .waves{
-    height: 50px;
+    height: 20px;
 }
 .parallax > use {
     animation: move-forever 25s cubic-bezier(.55,.5,.45,.5)     infinite;
@@ -34,3 +35,30 @@
       transform: translate3d(85px,0,0);
     }
   }
+
+  .footer-details{
+    display: flex;
+    justify-content: space-around;
+    padding: 8px 0;
+    background-color: var(--lightblack);
+    align-items: center;
+}
+.contact-us{
+    display: flex;
+    flex-wrap: wrap;
+    width: 40%;
+    justify-content: space-evenly;
+}
+.contact-us i{
+  font-size: 24px;
+}
+.footer-details a{
+    text-decoration: none;
+    color: white;
+}
+.footer-details>div:nth-child(1){
+    width: 60%;
+    margin-left: 15%;
+    opacity: 0.7;
+
+}
