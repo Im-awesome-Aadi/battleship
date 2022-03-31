@@ -211,6 +211,9 @@ li:before {
     margin-bottom: 5px;
 
 }
+.chat-window fieldset{
+    width: 10rem;
+}
 .cmp-lobby-chat legend, .chat-window legend{
     font-size: 16px;
     letter-spacing: 2px;
