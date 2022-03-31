@@ -41,3 +41,12 @@ async function setUserNameCookie(userName){
   }
 }
 
+function playChatAudio(){
+    const audio = new Audio('/assets/notif.mp3');
+    audio.play();
+}
+
+function playGameAudio(){
+    const audio = new Audio('/assets/attack.mp3');
+    audio.play();
+}

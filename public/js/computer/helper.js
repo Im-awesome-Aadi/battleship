@@ -13,6 +13,7 @@ function computerTurn(player){
     if(!attackPlayerBoardUI(player,r,c)){
         computerTurn(player);
     }
+    playGameAudio();
     giveTurnToComputer(false);
 
 }
@@ -113,6 +114,7 @@ function attackPlayerBoardUI(player,r,c){
     $('.next-game-popup').css('display','flex');
     $('.winner').html(`${winner} Won By`);
      $('.final-score').html(`${pStrength} - ${oStrength}`)
-    $('.cmp-game-card').css('opacity',0.3)    
+    $('.cmp-game-card').css('opacity',0.3)
+    $('.game-button-panel').css('display','block');    
 
  }

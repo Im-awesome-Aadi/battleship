@@ -17,7 +17,7 @@
       <div class= "hidden-username" ><%= userName%></div>
       <div class="lobby-page-card">
          <div class="header lobby-page-header fancy-heading">
-            <div class="lobby-id-wrap">LOBBY</div>
+            <div class="lobby-id-wrap"><%= lobbyId%> <span><i class="fa-solid fa-copy"></i></span></div>
             <div class="header-right">
                <div>
                   <i class='fa fa-user' ></i>
@@ -76,7 +76,19 @@
          <div class="game-countdown">
          </div>
       </div>
-
+      <div class="cmp-chat-wrap">
+         <div class="chat-popup">
+            <div class="chat-window">
+            </div>
+            <div>
+               <input type="text" placeholder="Type here...">
+            </div>
+         </div>
+         <div class="chat-button">
+            <span class="got-chat"></span>
+            <p>Chat</p>
+         </div>
+      </div>
       <%- include('./common/game')%>
       <div class="next-game-popup">
          <div class="winner"></div>
@@ -86,12 +98,12 @@
             <span></span><span></span><span></span><span></span>
             </button>
          </div>
+      </div>  
       </div>
-      </div>
+      <link rel="stylesheet" href="/css/computer.css" type="text/css">
       <%- include('./common/footer') %> 
       <%- include('./common/scripts') %>
       <link rel="stylesheet" href="/css/common/table.css" type="text/css">
-      <link rel="stylesheet" href="/css/computer.css" type="text/css">
       <script src="/js/lobby/dom.js"></script>
       <script src="/js/lobby/socket.js"></script>
       <script src="/js/lobby/helper.js"></script>
