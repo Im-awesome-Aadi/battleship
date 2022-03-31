@@ -63,12 +63,29 @@ function getRandomColorBox(){
 
 function addChat(isSender,sender,chat){
     let randomColorBox = getRandomColorBox();
-    
-    $('.cmp-lobby-chat').append(`<fieldset><legend><i class='fa fa-user' ></i>${sender}</legend><div class=${randomColorBox}>${chat}</div></fieldset>`);
-    if(isSender){
-        $('.cmp-input-message').val('');
+    let chatWindow ="";
+    let chatInput = "";
+    if($('.chat-button').is(':visible')){
+        chatWindow = '.chat-window';
+        chatInput = '.chat-popup input'
+        if(!isSender){
+            $('.got-chat').css('display','block');
+            playChatAudio();
+        }
+    }else{
+        chatWindow = '.cmp-lobby-chat';
+        chatInput = '.cmp-input-message';
+        if(!isSender){
+            playChatAudio();
+        }
     }
-    $('.cmp-lobby-chat').scrollTop($('.cmp-lobby-chat').prop('scrollHeight'));
+    $(chatWindow).append(`<fieldset><legend><i class='fa fa-user' ></i>${sender}</legend><div class=${randomColorBox}>${chat}</div></fieldset>`);
+    if(isSender){
+        $(chatInput).val('');
+    }
+    $(chatWindow).scrollTop($(chatWindow).prop('scrollHeight'));
+
+
 }
 
 function setLobbyAlerts(index,playerName){
@@ -105,6 +122,7 @@ function startTimer(duration, boardSize,shipsCount) {
 function showGameScreen(boardSize,shipsCount){
     $('.lobby-page-card').addClass('hide-ele');
     $('.cmp-game-screen').addClass('show-ele');
+    $('.cmp-chat-wrap').css('display','flex');
     createEmptyBoard('player-board',boardSize);
     createEmptyBoard('opponent-board',boardSize);
     showColumnLabel(boardSize)

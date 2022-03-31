@@ -4,19 +4,20 @@ var userName = $('.hidden-username').text();
 let totalTeams = 2;
 var myTurn = false;
 
-$('.send-chat').on('click',()=>{
-    const msg = $('.cmp-input-message').val();
-    if(msg){
-        addChat(true,userName,msg);
-        sendToServer(userName,msg);
-    }
-});
+
 $('.fa-copy').on('click',()=>{
     navigator.clipboard.writeText(lobbyId);
     $('.lobby-id-wrap').append('<span class="copy-tooltip">copied</span>')
     setTimeout(function(){
         $('.copy-tooltip').remove();
     },2000);
+});
+$('.send-chat').on('click',()=>{
+    const msg = $('.cmp-input-message').val();
+    if(msg){
+        addChat(true,userName,msg);
+        sendToServer(userName,msg);
+    }
 });
 $('.cmp-input-message').on('keypress',function(e) {
     if(e.which == 13) {
@@ -27,25 +28,14 @@ $('.cmp-input-message').on('keypress',function(e) {
         }
     }
 });
-
-$(document.body).on('click','.cmp-joined-member input', () => {
-    
-    const selectedPlayers = $('.cmp-joined-member input[type="checkbox"]:checked');
-    const startGame = $('.start-game');
-   
-   if(selectedPlayers.length < totalTeams) {
-    $('.cmp-joined-member input[type="checkbox"]').removeClass('not-allowed');
-    $(startGame).addClass('inactive-button');
-   }
-    if(selectedPlayers.length == totalTeams){
-        $('.cmp-joined-member input[type="checkbox"]:not(:checked)').addClass('not-allowed');
-        $(startGame).removeClass('inactive-button');
-
+$('.chat-popup input').on('keypress',function(e) {
+    if(e.which == 13) {
+        const msg = $(this).val();
+        if(msg){
+            addChat(true,userName,msg);
+            sendToServer(userName,msg);
+        }
     }
-   if(selectedPlayers.length > totalTeams) {
-       this.checked = false;
-
-   }
 });
 $('.lobby-page-header .header-right div:nth-child(2)').on('click',function(){
     window.location.href = '/';
@@ -135,3 +125,17 @@ $(document.body).on('click','.opponent-board td', function(){
  $(document.body).on('click','.next-game-popup button',()=>{
     window.location.href='/';
 });
+let isHidden=true;
+$('.chat-button').on('click',()=>{
+    if(isHidden){
+        $('.chat-popup').css('display','flex')
+        $('.chat-button p').text('CLOSE')
+        $('.got-chat').css('display','none')
+        isHidden=false;
+    }else{
+        $('.chat-popup').css('display','none');
+        $('.chat-button p').text('CHAT')
+        isHidden=true;
+
+    }
+})

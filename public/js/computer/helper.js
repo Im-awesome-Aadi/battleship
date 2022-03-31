@@ -13,7 +13,7 @@ function computerTurn(player){
     if(!attackPlayerBoardUI(player,r,c)){
         computerTurn(player);
     }
-    playAudio();
+    playGameAudio();
     giveTurnToComputer(false);
 
 }

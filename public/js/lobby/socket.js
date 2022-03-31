@@ -87,7 +87,7 @@ socket.on('attack-response',(data)=>{
 // Received attacked location (data.row_index,data.col_index)
 socket.on('defend',(data)=>{
     myTurn=true;
-    playAudio();
+    playGameAudio();
     const response = attackBoard(data.row_index,data.col_index);
     socket.emit('retreat',{
         response,
